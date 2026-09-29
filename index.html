@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="canonical" href="https://www.cfdyn.fr/">
+<link rel="alternate" hreflang="fr" href="https://www.cfdyn.fr/#fr">
+<link rel="alternate" hreflang="en" href="https://www.cfdyn.com/#en">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CFDYN · CFD, STD & bilans thermiques">
+<meta property="og:description" content="Voir l'air avant de construire. Études CFD, simulation thermique dynamique et bilans thermiques pour maîtres d'ouvrage, maîtres d'œuvre et entreprises HVAC. France et Suisse.">
+<meta property="og:url" content="https://www.cfdyn.fr/">
+<meta property="og:image" content="https://www.cfdyn.fr/logo/cfdyn-logo-horizontal-fond-sombre.png">
+<meta name="theme-color" content="#0F1B24">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"CFDYN","url":"https://www.cfdyn.fr/","logo":"https://www.cfdyn.fr/logo/cfdyn-icone-512.png","email":"contact@cfdyn.fr","description":"Bureau d'études en simulation aéraulique et thermique : CFD, STD, bilans thermiques, désenfumage.","areaServed":["FR","CH"],"knowsLanguage":["fr","en"],"address":{"@type":"PostalAddress","addressCountry":"FR"}}</script>
+<title>CFDYN · Bureau d'études CFD, STD et bilans thermiques</title>
+<meta name="description" content="CFDYN, bureau d'études en simulation aéraulique et thermique : CFD, simulation thermique dynamique et bilans thermiques. France et Suisse.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  --bg:#F3F5F6; --surface:#FFFFFF; --sunk:#E7ECEE; --ink:#0F1B24; --muted:#4E5D68; --line:#D3DBDF;
+  --accent:#2B47B0; --accent-ink:#FFFFFF;
+  --ok:#1F7A4D; --ok-bg:#E1F2E9; --warn:#9A5B00; --warn-bg:#FBEFD8; --info:#3A5570; --info-bg:#E3EBF2;
+  --lab:#0A1219; --lab-2:#101B25; --lab-line:#1F2E3A; --lab-ink:#E6ECF0; --lab-muted:#8C9CA8;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0D151C; --surface:#121D27; --sunk:#0A1117; --ink:#E4EAEE; --muted:#95A4AE; --line:#223340;
+    --accent:#8FA8FF; --accent-ink:#0A1230;
+    --ok:#6FD3A0; --ok-bg:#12291F; --warn:#F2B865; --warn-bg:#2E2413; --info:#9CB8D4; --info-bg:#16222E;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0D151C; --surface:#121D27; --sunk:#0A1117; --ink:#E4EAEE; --muted:#95A4AE; --line:#223340;
+  --accent:#8FA8FF; --accent-ink:#0A1230;
+  --ok:#6FD3A0; --ok-bg:#12291F; --warn:#F2B865; --warn-bg:#2E2413; --info:#9CB8D4; --info-bg:#16222E;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.app[data-lang="fr"] [lang="en"], .app[data-lang="en"] [lang="fr"]{display:none!important}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+button{font:inherit;color:inherit}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:800;font-variation-settings:"wdth" 112;line-height:1.08}
+h3{font-size:1.25rem;font-weight:700;font-variation-settings:"wdth" 108;line-height:1.2}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);max-width:60ch;font-size:1.06rem}
+section{padding-block:clamp(64px,8vw,104px);border-top:1px solid var(--line);scroll-margin-top:64px}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(32px,5vw,52px);max-width:780px}
+.dash{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:.95rem}
+.dash li{padding-left:18px;position:relative}
+.dash li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:2px;background:var(--accent)}
+.chip{display:inline-block;font-family:var(--mono);font-size:.7rem;padding:3px 8px;border-radius:20px;white-space:nowrap;line-height:1.5}
+.chip.ok{color:var(--ok);background:var(--ok-bg)}.chip.warn{color:var(--warn);background:var(--warn-bg)}.chip.info{color:var(--info);background:var(--info-bg)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px}
+.mark{display:flex;align-items:center;gap:11px;text-decoration:none}
+.mark-sym{width:34px;height:31px;flex:none;stroke:var(--bg);stroke-width:1.5;stroke-linejoin:round}
+.mark-word{font-family:var(--display);font-weight:300;font-variation-settings:"wdth" 125;font-size:1.35rem;letter-spacing:.04em;line-height:1}
+.mark-word b{font-weight:850}
+nav.links{display:flex;gap:22px;font-size:.93rem}
+nav.links a{text-decoration:none;color:var(--muted)}
+nav.links a:hover{color:var(--ink)}
+.top-right{display:flex;align-items:center;gap:12px}
+.langsw{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden;font-family:var(--mono);font-size:.74rem}
+.langsw button{background:transparent;border:0;padding:6px 9px;color:var(--muted);cursor:pointer}
+.langsw button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;text-decoration:none;padding:11px 18px;border-radius:4px;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{background:color-mix(in srgb,var(--accent) 86%,var(--ink))}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--ink)}
+@media (max-width:1060px){nav.links{display:none}}
+@media (max-width:520px){.top .btn{padding:8px 11px;font-size:.82rem}.mark-word{font-size:1.1rem}.mark{gap:8px}.top .mark-sym{width:28px;height:26px}}
+
+/* hero */
+.hero{padding-block:clamp(36px,5vw,72px) clamp(48px,6vw,88px);border-top:0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,56px);align-items:center}
+@media (max-width:980px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(2.4rem,4.8vw,3.9rem);font-weight:850;font-variation-settings:"wdth" 118;line-height:1;letter-spacing:-.02em;margin-block:18px 20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:36px;padding-top:22px;border-top:1px solid var(--line)}
+.facts div{display:grid;gap:2px;align-content:start}
+.facts b{font-family:var(--display);font-variation-settings:"wdth" 112;font-weight:800;font-size:1.1rem;line-height:1.15}
+.facts span{font-size:.8rem;color:var(--muted);line-height:1.35}
+@media (max-width:520px){.facts{grid-template-columns:1fr 1fr}}
+
+/* viewer */
+.viewer{margin:0;background:var(--lab);border:1px solid var(--lab-line);border-radius:8px;overflow:hidden;color:var(--lab-ink);font-family:var(--mono);font-size:.74rem;box-shadow:0 30px 60px -32px rgba(5,12,20,.55)}
+.vbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid var(--lab-line);flex-wrap:wrap;min-height:38px}
+.vbar b{font-weight:500;color:#fff}
+.vfile{display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vdots{display:inline-flex;gap:5px}
+.vdots i{width:7px;height:7px;border-radius:50%;background:#2A3A47}
+.vstate{color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap}
+.vstate.on{background:#173A2A;color:#8FE0B4;padding:2px 8px;border-radius:10px}
+.vstate.off{background:#3A2A1E;color:#F3B98A;padding:2px 8px;border-radius:10px}
+.vctl{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.vbar2{justify-content:flex-start;background:var(--lab-2)}
+.seg{display:inline-flex;border:1px solid var(--lab-line);border-radius:4px;overflow:hidden}
+.seg button,.tog{background:transparent;border:0;padding:4px 9px;color:var(--lab-muted);cursor:pointer;font-family:var(--mono);font-size:.72rem;line-height:1.5;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:#E6ECF0;color:#0A1219}
+.tog{border:1px solid var(--lab-line);border-radius:4px}
+.tog[aria-pressed="true"]{border-color:#8FA8FF;color:#C9D7FF}
+.vstage{position:relative;background:#000}
+.viewer canvas.field{display:block;width:100%;aspect-ratio:120/68;cursor:crosshair;touch-action:pan-y}
+.probe{position:absolute;pointer-events:none;background:rgba(7,13,18,.94);border:1px solid #33475A;padding:6px 9px;border-radius:3px;white-space:nowrap;color:#fff;z-index:2}
+.vfoot{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;padding:10px 12px;border-top:1px solid var(--lab-line)}
+.cbar{height:9px;border-radius:2px}
+.cticks{display:flex;justify-content:space-between;gap:4px;margin-top:5px;color:var(--lab-muted);font-size:.68rem;font-variant-numeric:tabular-nums}
+.readout{text-align:right;color:#fff;font-variant-numeric:tabular-nums;line-height:1.45;white-space:nowrap}
+.readout small{display:block;color:var(--lab-muted);font-size:.68rem}
+@media (max-width:560px){.vfoot{grid-template-columns:1fr}.readout{text-align:left;white-space:normal}}
+.viz-caption{margin-top:12px;font-size:.85rem;color:var(--muted)}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:960px){.services{grid-template-columns:1fr}}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:26px;display:flex;flex-direction:column;gap:16px}
+.svc-tag{display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.svc-tag b{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:850;font-size:1.05rem;color:var(--accent);letter-spacing:.06em}
+.svc > p{color:var(--muted)}
+.svc .out{margin-top:auto;padding-top:16px;border-top:1px dashed var(--line);font-size:.85rem;color:var(--muted)}
+.svc .out strong{color:var(--ink);font-weight:600}
+
+/* lab (case explorer) */
+.lab{background:var(--lab);color:var(--lab-ink);border-top:0;border-bottom:1px solid var(--lab-line)}
+.lab .eyebrow{color:var(--lab-muted)}
+.lab .lede{color:var(--lab-muted)}
+.cases{display:grid;gap:clamp(48px,7vw,88px)}
+.case{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:22px;align-items:start;scroll-margin-top:80px;padding-top:clamp(28px,4vw,44px);border-top:1px solid var(--lab-line)}
+.case:first-child{border-top:0;padding-top:0}
+.case-head{grid-column:1/-1;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.case-head .num{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:850;font-size:1.6rem;color:#8FA8FF;letter-spacing:.02em}
+.case-head h3{font-size:clamp(1.3rem,2.2vw,1.7rem);color:#fff;line-height:1.15}
+.case-head .sub{font-family:var(--mono);font-size:.74rem;color:var(--lab-muted)}
+@media (max-width:980px){.case{grid-template-columns:1fr}}
+.lab .viewer{box-shadow:none;border-color:#2A3A48}
+.panel{display:grid;gap:14px;align-content:start;background:var(--lab-2);border:1px solid var(--lab-line);border-radius:8px;padding:20px}
+.panel .tags{display:flex;flex-wrap:wrap;gap:6px}
+.panel .tags span{font-family:var(--mono);font-size:.68rem;padding:3px 8px;border-radius:3px;background:#1B2A37;color:#C9D5DD}
+.panel .tags span:first-child{background:#8FA8FF;color:#0A1230}
+.panel h3{font-size:1.25rem;line-height:1.15;color:#fff}
+.panel > p{color:var(--lab-muted);font-size:.92rem}
+.panel h4{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--lab-muted);margin-top:4px}
+.panel .dash{font-size:.88rem;color:#C9D5DD}
+.panel .dash li::before{background:#8FA8FF}
+.crit{display:grid;border-top:1px solid var(--lab-line)}
+.crit > div{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:9px 0;border-bottom:1px solid var(--lab-line);font-size:.84rem;align-items:center}
+.crit .cl{color:#C9D5DD;line-height:1.3}
+.crit .cs{font-family:var(--mono);font-size:.68rem;color:var(--lab-muted);grid-column:1}
+.crit .cv{grid-row:1/3;grid-column:2;display:grid;gap:3px;justify-items:end;font-family:var(--mono);font-size:.8rem;color:#fff;font-variant-numeric:tabular-nums}
+.crit .chip.ok{background:#173A2A;color:#8FE0B4}.crit .chip.warn{background:#3A2A1E;color:#F3B98A}.crit .chip.info{background:#1B2A37;color:#9CB8D4}
+.finding{background:#14253A;border-left:3px solid #8FA8FF;border-radius:0 4px 4px 0;padding:12px 14px;font-size:.88rem;color:#E6ECF0}
+.finding b{font-weight:600}
+.lab-note{margin-top:clamp(28px,4vw,44px);font-size:.82rem;color:var(--lab-muted);max-width:86ch}
+
+/* method */
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));counter-reset:s}
+@media (max-width:960px){.steps{grid-template-columns:1fr}}
+.step{position:relative;padding:22px 22px 0 0;border-top:2px solid var(--line);counter-increment:s}
+.step::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:.8rem;color:var(--accent);display:block;margin-bottom:10px}
+.step::after{content:"";position:absolute;top:-6px;left:0;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+@media (max-width:960px){.step{border-top:0;border-left:2px solid var(--line);padding:0 0 26px 26px}.step::after{top:4px;left:-6px}}
+.step h3{font-size:1.06rem;margin-bottom:8px}
+.step p{color:var(--muted);font-size:.92rem}
+.phases{margin-top:clamp(36px,5vw,56px);overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.phases table{border-collapse:collapse;width:100%;min-width:720px;font-size:.92rem}
+.phases th,.phases td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.phases tr:last-child td{border-bottom:0}
+.phases th{font-family:var(--mono);font-weight:500;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--sunk)}
+.phases td:first-child{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:800;color:var(--accent);white-space:nowrap}
+.phases td:nth-child(3){color:var(--muted)}
+
+/* deliverables */
+.report-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(28px,4vw,56px);align-items:start}
+@media (max-width:960px){.report-grid{grid-template-columns:1fr}}
+.deliv{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:14px}
+.deliv li{display:grid;grid-template-columns:28px 1fr;gap:10px;color:var(--muted);font-size:.95rem}
+.deliv li b{color:var(--ink);font-weight:600;display:block}
+.deliv svg{margin-top:3px}
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.sheet-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:15px 20px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.sheet-head b{color:var(--ink);font-weight:500}
+.sheet-scroll{overflow-x:auto}
+.sheet table{border-collapse:collapse;width:100%;min-width:600px;font-size:.9rem}
+.sheet th,.sheet td{padding:12px 20px;text-align:left;border-bottom:1px solid var(--line)}
+.sheet th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sheet td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sheet tr:last-child td{border-bottom:0}
+.sheet-foot{padding:12px 20px;font-size:.8rem;color:var(--muted);background:var(--sunk)}
+
+/* sectors */
+.sectors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+@media (max-width:1000px){.sectors{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.sectors{grid-template-columns:1fr}}
+.sector{background:var(--surface);padding:22px;display:grid;gap:8px;align-content:start}
+.sector h3{font-size:1.05rem}
+.sector p{color:var(--muted);font-size:.9rem}
+.sector code{font-family:var(--mono);font-size:.78rem;color:var(--ink);background:var(--sunk);padding:1px 6px;border-radius:3px}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,4vw,56px)}
+@media (max-width:960px){.about{grid-template-columns:1fr}}
+.about .body{color:var(--muted);max-width:62ch;display:grid;gap:16px}
+.about .body strong{color:var(--ink);font-weight:600}
+.stack{display:grid;gap:22px;align-content:start}
+.stack h3{font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-family:var(--mono);font-size:.78rem;padding:6px 10px;border:1px solid var(--line);border-radius:3px;background:var(--surface)}
+
+/* faq */
+.faq{display:grid;max-width:880px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 40px 18px 0;position:relative;font-weight:600;font-size:1.02rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:14px;font-family:var(--mono);font-size:1.3rem;color:var(--accent)}
+.faq details[open] summary::after{content:"−"}
+.faq details p{color:var(--muted);padding:0 40px 20px 0;max-width:70ch}
+
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,56px)}
+@media (max-width:960px){.contact{grid-template-columns:1fr}}
+.coord{display:grid;gap:18px;margin:28px 0 0}
+.coord > div{display:grid;gap:2px}
+.coord dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.coord dd{margin:0}
+.mail-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.mail-row code{font-family:var(--mono);font-size:1.02rem;user-select:all}
+.copy{font-family:var(--mono);font-size:.72rem;padding:4px 9px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:3px;cursor:pointer}
+.copy:hover{border-color:var(--ink)}
+form.req{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:clamp(20px,3vw,30px);display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:620px){form.req{grid-template-columns:1fr}}
+.f{display:grid;gap:6px}
+.f.full{grid-column:1/-1}
+.f label{font-size:.84rem;font-weight:600}
+.f input,.f select,.f textarea{font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:10px 12px;width:100%}
+.f textarea{min-height:130px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{outline:2px solid var(--accent);outline-offset:0;border-color:transparent}
+.form-foot{grid-column:1/-1;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.form-status{font-size:.86rem;color:var(--muted)}
+.form-status.ok{color:var(--ok)}
+
+footer{border-top:1px solid var(--line);padding-block:34px 44px;font-size:.86rem;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer nav{display:flex;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+footer .mark-sym{width:26px;height:24px}
+</style>
+</head>
+<body>
+
+
+<div class="app" id="app" data-lang="fr">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="cfdyn-mark" viewBox="-1 -1 82 74"><polygon points="40,2 35,10.65 45,10.65" fill="#B40426"/><polygon points="35,10.65 30,19.3 40,19.3" fill="#C8312E"/><polygon points="45,10.65 40,19.3 50,19.3" fill="#E26952"/><polygon points="35,10.65 45,10.65 40,19.3" fill="#C8312E"/><polygon points="30,19.3 20,36.6 40,36.6" fill="#F49A7B"/><polygon points="50,19.3 40,36.6 60,36.6" fill="#E26952"/><polygon points="30,19.3 50,19.3 40,36.6" fill="#F7A889"/><polygon points="20,36.6 10,54 30,54" fill="#C9D7F0"/><polygon points="40,36.6 30,54 50,54" fill="#EDD1C2"/><polygon points="60,36.6 50,54 70,54" fill="#F7A889"/><polygon points="20,36.6 40,36.6 30,54" fill="#DDDDDD"/><polygon points="40,36.6 60,36.6 50,54" fill="#EDD1C2"/><polygon points="10,54 0,71.3 20,71.3" fill="#3B4CC0"/><polygon points="30,54 20,71.3 40,71.3" fill="#4F63D6"/><polygon points="50,54 40,71.3 60,71.3" fill="#6788EE"/><polygon points="70,54 60,71.3 80,71.3" fill="#9ABBFF"/><polygon points="10,54 30,54 20,71.3" fill="#4F63D6"/><polygon points="30,54 50,54 40,71.3" fill="#6788EE"/><polygon points="50,54 70,54 60,71.3" fill="#9ABBFF"/></symbol></defs></svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top" data-i18n-aria="aria_home" aria-label="CFDYN, accueil">
+      <svg class="mark-sym" viewBox="-1 -1 82 74" aria-hidden="true"><use href="#cfdyn-mark"/></svg>
+      <span class="mark-word"><b>CFD</b>YN</span>
+    </a>
+    <nav class="links" data-i18n-aria="aria_nav" aria-label="Navigation principale">
+      <a href="#prestations"><span lang="fr">Prestations</span><span lang="en">Services</span></a>
+      <a href="#labo"><span lang="fr">Cas d'application</span><span lang="en">Case studies</span></a>
+      <a href="#methode"><span lang="fr">Méthode</span><span lang="en">Method</span></a>
+      <a href="#livrables"><span lang="fr">Livrables</span><span lang="en">Deliverables</span></a>
+      <a href="#secteurs"><span lang="fr">Secteurs</span><span lang="en">Sectors</span></a>
+      <a href="#apropos"><span lang="fr">À propos</span><span lang="en">About</span></a>
+    </nav>
+    <div class="top-right">
+      <div class="langsw" role="group" aria-label="Langue / Language">
+        <button type="button" id="lang-fr" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-primary" href="#contact"><span lang="fr">Devis</span><span lang="en">Quote</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow"><span lang="fr">Bureau d'études · CFD · STD · Bilans thermiques</span><span lang="en">Engineering consultancy · CFD · Thermal simulation · Heat loads</span></p>
+        <h1><span lang="fr">Voir l'air <em>avant</em> de construire.</span><span lang="en">See the air <em>before</em> you build.</span></h1>
+        <p class="lede"><span lang="fr">CFDYN simule l'aéraulique et la thermique des locaux exigeants : salles propres, laboratoires, hôpitaux, parkings, halls industriels. Vous savez si un poste de travail sera confiné, si une salle restera confortable, si les fumées iront au bon endroit, avant de figer la conception.</span><span lang="en">CFDYN simulates airflow and heat in demanding spaces: cleanrooms, laboratories, hospitals, car parks, industrial halls. You know whether a workstation is contained, whether a room stays comfortable, whether smoke goes where it should, before the design is frozen.</span></p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#contact"><span lang="fr">Décrire mon projet</span><span lang="en">Describe my project</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+          <a class="btn btn-ghost" href="#labo"><span lang="fr">Explorer les cas</span><span lang="en">Explore the cases</span></a>
+        </div>
+        <div class="facts">
+          <div><b><span lang="fr">De l'esquisse à l'exécution</span><span lang="en">Concept to construction</span></b><span lang="fr">Une étude adaptée à chaque phase</span><span lang="en">A study fitted to each stage</span></div>
+          <div><b>OpenFOAM · Autodesk CFD · Revit</b><span lang="fr">De la maquette BIM au modèle de calcul</span><span lang="en">From BIM model to solver</span></div>
+          <div><b><span lang="fr">France · Suisse</span><span lang="en">France · Switzerland</span></b><span lang="fr">Livrables en français et en anglais</span><span lang="en">Deliverables in French and English</span></div>
+        </div>
+      </div>
+      <div>
+        <figure class="viewer" data-sim="hero" role="img" data-i18n-aria="aria_hero" aria-label="Simulation en direct"></figure>
+        <p class="viz-caption"><span lang="fr">Calcul 2D en direct dans votre navigateur. Basculez entre température et vitesse, survolez la coupe pour lire les valeurs.</span><span lang="en">Live 2D computation in your browser. Switch between temperature and speed, hover over the section to read values.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="prestations">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span lang="fr">Prestations</span><span lang="en">Services</span></p>
+        <h2><span lang="fr">Trois calculs, une seule question : le local tiendra-t-il ses objectifs ?</span><span lang="en">Three calculations, one question: will the space meet its targets?</span></h2>
+        <p class="lede"><span lang="fr">Chaque étude part de vos contraintes réelles et se termine par des conclusions directement exploitables : préconisations à reporter dans les pièces du marché pour la maîtrise d'ouvrage et la maîtrise d'œuvre, validation ou redimensionnement du système HVAC pour l'entreprise qui le met en œuvre.</span><span lang="en">Each study starts from your real constraints and ends with conclusions you can act on: recommendations for the client and the design team to carry into the contract documents, validation or resizing of the HVAC system for the contractor who installs it.</span></p>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <div class="svc-tag"><b>CFD</b><span lang="fr">mécanique des fluides numérique</span><span lang="en">computational fluid dynamics</span></div>
+          <h3><span lang="fr">Où va l'air, et à quelle vitesse</span><span lang="en">Where the air goes, and how fast</span></h3>
+          <p><span lang="fr">Écoulement, températures, fumées et polluants en 3D, à partir de votre maquette.</span><span lang="en">Airflow, temperatures, smoke and contaminants in 3D, from your model.</span></p>
+          <ul class="dash">
+            <li><span lang="fr">Diffusion d'air, confort PMV/PPD, courants d'air</span><span lang="en">Air distribution, PMV/PPD comfort, draughts</span></li>
+            <li><span lang="fr">Salles propres ISO 5 à ISO 8, laboratoires à sorbonnes, confinement</span><span lang="en">Cleanrooms, laboratories with fume hoods, containment</span></li>
+            <li><span lang="fr">Désenfumage de parkings et d'atriums</span><span lang="en">Smoke control in car parks and atriums</span></li>
+            <li><span lang="fr">Stratification des grands volumes</span><span lang="en">Stratification in large volumes</span></li>
+          </ul>
+          <p class="out"><strong><span lang="fr">Vous recevez</span><span lang="en">You receive</span></strong> <span lang="fr">des cartographies commentées, les critères vérifiés et les modifications recommandées.</span><span lang="en">annotated maps, the criteria checked and the recommended changes.</span></p>
+        </article>
+        <article class="svc">
+          <div class="svc-tag"><b>STD</b><span lang="fr">simulation thermique dynamique</span><span lang="en">dynamic thermal simulation</span></div>
+          <h3><span lang="fr">Le bâtiment heure par heure, sur une année</span><span lang="en">The building hour by hour, over a year</span></h3>
+          <p><span lang="fr">Températures et besoins de chaque zone avec inertie, apports, occupation et météo.</span><span lang="en">Temperatures and loads per zone with thermal mass, gains, occupancy and weather.</span></p>
+          <ul class="dash">
+            <li><span lang="fr">Confort d'été, degrés-heures d'inconfort (DH, RE2020)</span><span lang="en">Summer comfort, discomfort degree-hours (DH, RE2020)</span></li>
+            <li><span lang="fr">Besoins de chauffage et de refroidissement</span><span lang="en">Heating and cooling demand</span></li>
+            <li><span lang="fr">Variantes : protections solaires, isolation, surventilation</span><span lang="en">Options: shading, insulation, night cooling</span></li>
+            <li><span lang="fr">Dimensionnement des systèmes</span><span lang="en">System sizing</span></li>
+          </ul>
+          <p class="out"><strong><span lang="fr">Vous recevez</span><span lang="en">You receive</span></strong> <span lang="fr">les courbes, les heures d'inconfort par local et un classement chiffré des variantes.</span><span lang="en">the profiles, discomfort hours per room and a quantified ranking of options.</span></p>
+        </article>
+        <article class="svc">
+          <div class="svc-tag"><b>BILAN</b><span lang="fr">bilan thermique</span><span lang="en">heat load calculation</span></div>
+          <h3><span lang="fr">Déperditions, apports et puissances</span><span lang="en">Heat losses, gains and capacities</span></h3>
+          <p><span lang="fr">Le calcul de base de tout projet CVC, local par local, avec des hypothèses tracées.</span><span lang="en">The foundation of every HVAC project, room by room, with traceable assumptions.</span></p>
+          <ul class="dash">
+            <li><span lang="fr">Déperditions selon NF EN 12831</span><span lang="en">Heat losses to EN 12831</span></li>
+            <li><span lang="fr">Apports internes et solaires, puissances frigorifiques</span><span lang="en">Internal and solar gains, cooling capacities</span></li>
+            <li><span lang="fr">Bilans des salles propres et zones de process</span><span lang="en">Cleanroom and process area balances</span></li>
+            <li><span lang="fr">Vérification des notes de calcul d'entreprise (VISA)</span><span lang="en">Review of contractor calculations</span></li>
+          </ul>
+          <p class="out"><strong><span lang="fr">Vous recevez</span><span lang="en">You receive</span></strong> <span lang="fr">une note de calcul par local, au format de vos pièces écrites.</span><span lang="en">a calculation note per room, in your document format.</span></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="labo" class="lab">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span lang="fr">Cas d'application · calcul en direct</span><span lang="en">Case studies · live computation</span></p>
+        <h2><span lang="fr">Cinq situations où la CFD change la conception<sup>*</sup></span><span lang="en">Five situations where CFD changes the design<sup>*</sup></span></h2>
+        <p class="lede"><span lang="fr">Chaque champ se calcule en direct quand il apparaît à l'écran. Changez la grandeur affichée, activez les isolignes et les vecteurs, et lisez les critères qui s'évaluent en continu, comme dans nos rapports.</span><span lang="en">Each field is computed live as it comes into view. Switch the displayed quantity, turn on isolines and vectors, and read the criteria evaluated continuously, as in our reports.</span></p>
+      </div>
+      <div class="cases" id="cases"></div>
+      <p class="lab-note"><span lang="fr">* Ces visualisations sont données à titre indicatif et commercial. Elles reposent sur un solveur 2D simplifié (écoulement incompressible, flottabilité de Boussinesq) destiné à montrer les phénomènes, et ne représentent pas le rendu réel de nos études, bien plus détaillées : modélisation 3D de la géométrie réelle, maillage adapté, modèles de turbulence, conditions aux limites issues du dimensionnement, vérification de convergence et rapport complet.</span><span lang="en">* These visualisations are provided for illustration and marketing purposes. They rely on a simplified 2D solver (incompressible flow, Boussinesq buoyancy) built to show the phenomena, and do not represent the actual output of our studies, which are far more detailed: 3D modelling of the real geometry, suitable meshing, turbulence models, boundary conditions from the design, convergence checks and a full report.</span></p>
+    </div>
+  </section>
+
+  <section id="methode">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span lang="fr">Méthode</span><span lang="en">Method</span></p>
+        <h2><span lang="fr">De la maquette au rapport, en cinq étapes</span><span lang="en">From model to report, in five steps</span></h2>
+        <p class="lede"><span lang="fr">Une démarche traçable : chaque hypothèse est écrite, chaque résultat est vérifié avant d'être interprété.</span><span lang="en">A traceable process: every assumption is written down, every result is checked before it is interpreted.</span></p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3><span lang="fr">Données d'entrée</span><span lang="en">Inputs</span></h3><p><span lang="fr">Maquette BIM (Revit, IFC) ou plans DWG, CCTP, fiches techniques des diffuseurs et équipements.</span><span lang="en">BIM model (Revit, IFC) or DWG drawings, specifications, diffuser and equipment data sheets.</span></p></div>
+        <div class="step"><h3><span lang="fr">Géométrie et maillage</span><span lang="en">Geometry and mesh</span></h3><p><span lang="fr">Extraction du volume d'air, patchs de soufflage et de reprise, maillage raffiné aux zones sensibles.</span><span lang="en">Air volume extraction, supply and return patches, mesh refined in critical areas.</span></p></div>
+        <div class="step"><h3><span lang="fr">Calcul</span><span lang="en">Solving</span></h3><p><span lang="fr">Conditions aux limites issues du dimensionnement CVC, turbulence, thermique, flottabilité.</span><span lang="en">Boundary conditions from the HVAC design, turbulence, heat transfer, buoyancy.</span></p></div>
+        <div class="step"><h3><span lang="fr">Vérification</span><span lang="en">Verification</span></h3><p><span lang="fr">Convergence, sensibilité au maillage, bilans de masse et d'énergie.</span><span lang="en">Convergence, mesh sensitivity, mass and energy balances.</span></p></div>
+        <div class="step"><h3><span lang="fr">Rapport</span><span lang="en">Report</span></h3><p><span lang="fr">Critères vérifiés, cartographies commentées, préconisations chiffrées.</span><span lang="en">Criteria checked, annotated maps, quantified recommendations.</span></p></div>
+      </div>
+      <div class="phases">
+        <table>
+          <thead><tr><th><span lang="fr">Phase</span><span lang="en">Stage</span></th><th><span lang="fr">Ce que l'étude apporte</span><span lang="en">What the study provides</span></th><th><span lang="fr">Exemple de question traitée</span><span lang="en">Example question</span></th></tr></thead>
+          <tbody>
+            <tr><td><span lang="fr">ESQ · APS</span><span lang="en">Concept</span></td><td><span lang="fr">Choix du principe de ventilation et de traitement d'air</span><span lang="en">Choice of ventilation and air treatment principle</span></td><td><span lang="fr">Flux unidirectionnel ou dilution pour cette salle ISO 7 ?</span><span lang="en">Unidirectional flow or dilution for this ISO 7 room?</span></td></tr>
+            <tr><td><span lang="fr">APD · PRO</span><span lang="en">Developed design</span></td><td><span lang="fr">Validation de la diffusion et des puissances</span><span lang="en">Validation of air distribution and capacities</span></td><td><span lang="fr">Les vitesses restent-elles sous 0,2 m/s aux postes ?</span><span lang="en">Do speeds stay below 0.2 m/s at workstations?</span></td></tr>
+            <tr><td><span lang="fr">DCE</span><span lang="en">Tender</span></td><td><span lang="fr">Exigences de performance à écrire au CCTP</span><span lang="en">Performance requirements for the specification</span></td><td><span lang="fr">Quels critères imposer à l'entreprise et comment les contrôler ?</span><span lang="en">Which criteria must the contractor meet, and how are they checked?</span></td></tr>
+            <tr><td><span lang="fr">EXE</span><span lang="en">Construction</span></td><td><span lang="fr">Validation du système HVAC proposé par l'entreprise, appui au VISA</span><span lang="en">Validation of the contractor's HVAC system, support for design review</span></td><td><span lang="fr">Le système proposé en variante tient-il les objectifs du CCTP ?</span><span lang="en">Does the alternative system still meet the specification targets?</span></td></tr>
+            <tr><td><span lang="fr">Exploitation</span><span lang="en">Operation</span></td><td><span lang="fr">Diagnostic d'un inconfort ou d'une dérive</span><span lang="en">Diagnosis of discomfort or drift</span></td><td><span lang="fr">D'où vient la zone chaude signalée par les occupants ?</span><span lang="en">Where does the hot spot reported by occupants come from?</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="livrables">
+    <div class="wrap report-grid">
+      <div>
+        <p class="eyebrow"><span lang="fr">Livrables</span><span lang="en">Deliverables</span></p>
+        <h2 style="margin-top:14px"><span lang="fr">Un rapport qui conclut</span><span lang="en">A report that reaches a conclusion</span></h2>
+        <p class="lede" style="margin-top:14px"><span lang="fr">Chaque critère est confronté à son seuil normatif. Quand un point ne passe pas, le rapport indique où, pourquoi et quoi modifier.</span><span lang="en">Every criterion is compared with its standard threshold. When something fails, the report says where, why and what to change.</span></p>
+        <ul class="deliv">
+          <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><rect x="1.5" y="1.5" width="15" height="15" rx="2" fill="none" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 12l3-4 2.5 2.5L13 6" fill="none" stroke="var(--accent)" stroke-width="1.5"/></svg><span><b><span lang="fr">Rapport d'étude</span><span lang="en">Study report</span></b><span lang="fr">Hypothèses, méthode, résultats et conclusions.</span><span lang="en">Assumptions, method, results and conclusions.</span></span></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><rect x="1.5" y="1.5" width="15" height="15" rx="2" fill="none" stroke="var(--accent)" stroke-width="1.5"/><path d="M1.5 9h15M9 1.5v15" stroke="var(--accent)" stroke-width="1.5"/></svg><span><b><span lang="fr">Cartographies</span><span lang="en">Result maps</span></b><span lang="fr">Coupes et plans de température, vitesse et concentration aux hauteurs utiles.</span><span lang="en">Sections and plans of temperature, speed and concentration at relevant heights.</span></span></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.5" fill="none" stroke="var(--accent)" stroke-width="1.5"/><path d="M5.5 9.2l2.4 2.3 4.6-5" fill="none" stroke="var(--accent)" stroke-width="1.5"/></svg><span><b><span lang="fr">Préconisations</span><span lang="en">Recommendations</span></b><span lang="fr">De l'ajustement d'un diffuseur au redimensionnement complet du système HVAC : principe de diffusion, débits, puissances, implantation des équipements, reportables au CCTP ou au dossier d'exécution.</span><span lang="en">From adjusting one diffuser to resizing the whole HVAC system: distribution principle, flow rates, capacities, equipment layout, ready for the specification or the construction documents.</span></span></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 2.5h8l4 4v9H3z" fill="none" stroke="var(--accent)" stroke-width="1.5"/><path d="M11 2.5v4h4" fill="none" stroke="var(--accent)" stroke-width="1.5"/></svg><span><b><span lang="fr">Réunion de restitution</span><span lang="en">Results meeting</span></b><span lang="fr">Présentation au maître d'ouvrage, à la maîtrise d'œuvre ou à l'entreprise.</span><span lang="en">Presentation to the client, the design team or the contractor.</span></span></li>
+        </ul>
+      </div>
+      <div class="sheet">
+        <div class="sheet-head"><span><b><span lang="fr">Synthèse des critères</span><span lang="en">Criteria summary</span></b> · <span lang="fr">bureau rafraîchi, poste de travail</span><span lang="en">cooled office, workstation</span></span><span lang="fr">Extrait illustratif</span><span lang="en">Illustrative excerpt</span></div>
+        <div class="sheet-scroll">
+          <table>
+            <thead><tr><th><span lang="fr">Critère</span><span lang="en">Criterion</span></th><th><span lang="fr">Seuil</span><span lang="en">Threshold</span></th><th><span lang="fr">Résultat</span><span lang="en">Result</span></th><th><span lang="fr">Statut</span><span lang="en">Status</span></th></tr></thead>
+            <tbody>
+              <tr><td><span lang="fr">Vitesse d'air en zone d'occupation</span><span lang="en">Air speed in the occupied zone</span></td><td class="num">≤ 0,20 m/s</td><td class="num">0,14 m/s</td><td><span class="chip ok"><span lang="fr">Conforme</span><span lang="en">Pass</span></span></td></tr>
+              <tr><td><span lang="fr">Écart vertical tête-chevilles (1,1 m / 0,1 m)</span><span lang="en">Head-to-ankle difference (1.1 m / 0.1 m)</span></td><td class="num">&lt; 3 K</td><td class="num">1,8 K</td><td><span class="chip ok"><span lang="fr">Conforme</span><span lang="en">Pass</span></span></td></tr>
+              <tr><td><span lang="fr">Confort thermique PMV (ISO 7730, cat. B)</span><span lang="en">Thermal comfort PMV (ISO 7730, cat. B)</span></td><td class="num">−0,5 … +0,5</td><td class="num">+0,3</td><td><span class="chip ok"><span lang="fr">Conforme</span><span lang="en">Pass</span></span></td></tr>
+              <tr><td><span lang="fr">Taux d'inconfort par courant d'air DR</span><span lang="en">Draught rate DR</span></td><td class="num">&lt; 20 %</td><td class="num">23 %</td><td><span class="chip warn"><span lang="fr">À reprendre</span><span lang="en">To revise</span></span></td></tr>
+              <tr><td><span lang="fr">Âge moyen de l'air au poste</span><span lang="en">Mean age of air at workstation</span></td><td class="num">—</td><td class="num">4,2 min</td><td><span class="chip info"><span lang="fr">Information</span><span lang="en">Info</span></span></td></tr>
+              <tr><td><span lang="fr">Degrés-heures d'inconfort (STD)</span><span lang="en">Discomfort degree-hours (DTS)</span></td><td class="num">&lt; 1 250 °C·h</td><td class="num">410 °C·h</td><td><span class="chip ok"><span lang="fr">Conforme</span><span lang="en">Pass</span></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="sheet-foot"><span lang="fr">Préconisation associée au point « À reprendre » : réduire la vitesse de soufflage de la grille murale de 20 % et allonger la portée sur plafond, puis vérifier par un second calcul.</span><span lang="en">Recommendation for the "To revise" item: reduce the wall grille supply velocity by 20 % and extend the ceiling throw, then confirm with a second run.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="secteurs">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span lang="fr">Secteurs</span><span lang="en">Sectors</span></p>
+        <h2><span lang="fr">Des locaux où l'erreur de conception coûte cher</span><span lang="en">Spaces where a design error is expensive</span></h2>
+      </div>
+      <div class="sectors">
+        <div class="sector"><h3><span lang="fr">Salles propres et laboratoires</span><span lang="en">Cleanrooms and laboratories</span></h3><p><span lang="fr"><code>ISO 5</code> à <code>ISO 8</code> selon ISO 14644, cascades de pression, sorbonnes.</span><span lang="en"><code>ISO 5</code> to <code>ISO 8</code> to ISO 14644, pressure cascades, fume hoods.</span></p></div>
+        <div class="sector"><h3><span lang="fr">Santé</span><span lang="en">Healthcare</span></h3><p><span lang="fr">Blocs opératoires <code>NF S90-351</code>, flux unidirectionnels, chambres en pression.</span><span lang="en">Operating theatres to <code>NF S90-351</code>, unidirectional flow, isolation rooms.</span></p></div>
+        <div class="sector"><h3><span lang="fr">Pharmacie</span><span lang="en">Pharmaceutical</span></h3><p><span lang="fr">Zones BPF, contamination croisée, transferts entre zones.</span><span lang="en">GMP areas, cross-contamination, transfers between zones.</span></p></div>
+        <div class="sector"><h3><span lang="fr">Parkings et atriums</span><span lang="en">Car parks and atriums</span></h3><p><span lang="fr">Désenfumage, jet fans, accès des secours.</span><span lang="en">Smoke control, jet-fan ventilation, fire-fighting access.</span></p></div>
+        <div class="sector"><h3><span lang="fr">Musées et réserves</span><span lang="en">Museums and archives</span></h3><p><span lang="fr">Stabilité hygrothermique autour des collections.</span><span lang="en">Hygrothermal stability around collections.</span></p></div>
+        <div class="sector"><h3><span lang="fr">Entrepôts et halls</span><span lang="en">Warehouses and halls</span></h3><p><span lang="fr">Stratification, aérothermes, rideaux d'air sur les quais.</span><span lang="en">Stratification, unit heaters, air curtains at loading bays.</span></p></div>
+        <div class="sector"><h3><span lang="fr">Cuisines professionnelles</span><span lang="en">Commercial kitchens</span></h3><p><span lang="fr">Captation des hottes, apports de cuisson, confort des postes.</span><span lang="en">Hood capture, cooking gains, comfort at workstations.</span></p></div>
+        <div class="sector"><h3><span lang="fr">Tertiaire et locaux techniques</span><span lang="en">Offices and plant rooms</span></h3><p><span lang="fr">Confort d'été <code>DH</code> RE2020, CO₂ en classe, points chauds en salle serveurs.</span><span lang="en">RE2020 <code>DH</code> summer comfort, classroom CO₂, server-room hot spots.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="apropos">
+    <div class="wrap about">
+      <div>
+        <p class="eyebrow"><span lang="fr">À propos</span><span lang="en">About</span></p>
+        <h2 style="margin-top:14px;margin-bottom:22px"><span lang="fr">Un ingénieur CVC qui simule, pas un numéricien isolé</span><span lang="en">An HVAC engineer who simulates, not a detached analyst</span></h2>
+        <div class="body">
+          <p><span lang="fr">CFDYN a été fondé par un <strong>ingénieur CVC/HVAC</strong> qui conçoit des installations complexes à toutes les phases, de l'esquisse à l'exécution : laboratoires, salles propres, hôpitaux, établissements scolaires, sites pharmaceutiques et entrepôts, en France et en Suisse.</span><span lang="en">CFDYN was founded by an <strong>HVAC engineer</strong> who designs complex installations at every stage, from concept to construction: laboratories, cleanrooms, hospitals, schools, pharmaceutical sites and warehouses, in France and Switzerland.</span></p>
+          <p><span lang="fr">Cette pratique de la maîtrise d'œuvre change la simulation. Les conditions aux limites viennent d'un dimensionnement réel, les résultats sont lus au regard du CCTP et des contraintes de chantier, et les préconisations sont rédigées pour être intégrées aux pièces du marché.</span><span lang="en">That design practice changes how simulation is done. Boundary conditions come from real sizing, results are read against the specification and site constraints, and recommendations are written to go straight into contract documents.</span></p>
+          <p><span lang="fr">Les calculs s'appuient sur des outils éprouvés, OpenFOAM et Autodesk CFD, et sur une chaîne directe entre la maquette BIM et le modèle de calcul.</span><span lang="en">Calculations rely on proven tools, OpenFOAM and Autodesk CFD, and a direct link between the BIM model and the calculation model.</span></p>
+        </div>
+      </div>
+      <div class="stack">
+        <div><h3><span lang="fr">Outils</span><span lang="en">Tools</span></h3><div class="chips"><span>OpenFOAM</span><span>Autodesk CFD</span><span>snappyHexMesh</span><span>ParaView</span><span>Revit</span><span>IFC</span><span>Python</span><span>AutoCAD</span></div></div>
+        <div><h3><span lang="fr">Référentiels</span><span lang="en">Standards</span></h3><div class="chips"><span>NF EN 12831</span><span>ISO 7730</span><span>ISO 14644</span><span>NF EN 14175</span><span>NF S90-351</span><span>RE2020</span><span>DTU</span><span>SIA</span><span>ASHRAE</span></div></div>
+        <div><h3><span lang="fr">Interlocuteurs</span><span lang="en">Clients</span></h3><div class="chips"><span lang="fr">Maîtres d'œuvre</span><span lang="en">Design teams</span><span lang="fr">Architectes</span><span lang="en">Architects</span><span lang="fr">BET fluides</span><span lang="en">MEP consultants</span><span lang="fr">Maîtres d'ouvrage</span><span lang="en">Building owners</span><span lang="fr">Entreprises CVC/HVAC</span><span lang="en">HVAC contractors</span><span lang="fr">Industriels</span><span lang="en">Manufacturers</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span lang="fr">Questions fréquentes</span><span lang="en">FAQ</span></p>
+        <h2><span lang="fr">Avant de lancer une étude</span><span lang="en">Before starting a study</span></h2>
+      </div>
+      <div class="faq">
+        <details><summary><span lang="fr">Quand faut-il une étude CFD plutôt qu'un simple dimensionnement ?</span><span lang="en">When do I need CFD rather than standard sizing?</span></summary><p><span lang="fr">Dès que la répartition de l'air compte autant que le débit : salle propre, laboratoire équipé de sorbonnes, grand volume stratifié, désenfumage, local chargé en équipements. Le dimensionnement donne les débits ; la CFD vérifie qu'ils arrivent au bon endroit.</span><span lang="en">Whenever where the air goes matters as much as how much there is: cleanrooms, laboratories with fume hoods, stratified volumes, smoke control, equipment-dense rooms. Sizing gives the flow rates; CFD checks that the air reaches the right places.</span></p></details>
+        <details><summary><span lang="fr">Quelles données dois-je fournir ?</span><span lang="en">What information do I need to provide?</span></summary><p><span lang="fr">Idéalement la maquette Revit ou un export IFC, les plans de diffusion d'air, le CCTP ou le programme, et les puissances des équipements ; à défaut, des plans DWG et coupes suffisent. Il faut surtout définir ensemble les grandeurs à étudier (vitesses, températures, concentrations, pressions) et les critères de conformité à vérifier, qu'ils soient normatifs ou contractuels. Ce cadrage fait partie de la proposition.</span><span lang="en">Ideally the Revit model or an IFC export, air distribution drawings, the specification or brief, and equipment heat loads; DWG plans and sections are enough otherwise. Above all, we define together the quantities to study (speeds, temperatures, concentrations, pressures) and the compliance criteria to check, whether they come from standards or from the contract. This scoping is part of the proposal.</span></p></details>
+        <details><summary><span lang="fr">Quels sont les délais habituels ?</span><span lang="en">How long does a study take?</span></summary><p><span lang="fr">Un bilan thermique demande quelques jours. Une STD ou une étude CFD d'un local demande généralement deux à quatre semaines selon la taille du modèle et le nombre de variantes.</span><span lang="en">A heat load calculation takes a few days. A thermal simulation or a CFD study of one space usually takes two to four weeks depending on model size and the number of options.</span></p></details>
+        <details><summary><span lang="fr">Qui peut commander une étude ?</span><span lang="en">Who can commission a study?</span></summary><p><span lang="fr">Les maîtres d'ouvrage et les industriels qui veulent sécuriser un local sensible, les maîtres d'œuvre et bureaux d'études fluides qui souhaitent confier la partie simulation, et les entreprises CVC/HVAC qui doivent valider ou justifier leur système avant exécution, en réponse au CCTP ou en variante. Les livrables sont fournis au format des pièces de chacun.</span><span lang="en">Building owners and manufacturers who want to secure a sensitive space, design teams and MEP consultants who wish to outsource the simulation work, and HVAC contractors who need to validate or justify their system before construction, in response to the specification or as an alternative. Deliverables are provided in each party's own document format.</span></p></details>
+        <details><summary><span lang="fr">Comment est établi le devis ?</span><span lang="en">How is the quote calculated?</span></summary><p><span lang="fr">Au forfait, selon la complexité du modèle (géométrie, phénomènes à représenter), le nombre de grandeurs et de critères à vérifier, le nombre de variantes et la phase du projet. Un grand local complexe peut représenter plus de travail que plusieurs locaux simples. Le devis est gratuit.</span><span lang="en">As a fixed fee, based on the complexity of the model (geometry, phenomena to represent), the number of quantities and criteria to check, the number of options and the project stage. One large complex space can be more work than several simple rooms. Quotes are free.</span></p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <p class="eyebrow"><span lang="fr">Contact</span><span lang="en">Contact</span></p>
+        <h2 style="margin-top:14px"><span lang="fr">Parlons de votre projet</span><span lang="en">Tell us about your project</span></h2>
+        <p class="lede" style="margin-top:14px"><span lang="fr">Maître d'ouvrage, maître d'œuvre ou entreprise : décrivez le bâtiment, la phase et la question à traiter. Vous recevez une proposition chiffrée sous 48 heures ouvrées.</span><span lang="en">Client, design team or contractor: describe the building, the stage and the question to answer. You will receive a priced proposal within two working days.</span></p>
+        <dl class="coord">
+          <div><dt><span lang="fr">Courriel</span><span lang="en">Email</span></dt><dd><span class="mail-row"><code id="mail">contact@cfdyn.fr</code><button type="button" class="copy" id="copyMail" data-i18n="copy">Copier</button></span></dd></div>
+          <div><dt><span lang="fr">Zone d'intervention</span><span lang="en">Coverage</span></dt><dd><span lang="fr">France entière et Suisse</span><span lang="en">All of France and Switzerland</span></dd></div>
+          <div><dt><span lang="fr">Sites</span><span lang="en">Websites</span></dt><dd style="font-family:var(--mono);font-size:.85rem">cfdyn.fr · cfdyn.com</dd></div>
+        </dl>
+      </div>
+      <form class="req" id="reqForm" novalidate>
+        <div class="f"><label for="f-name"><span lang="fr">Nom et prénom</span><span lang="en">Full name</span></label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="f"><label for="f-org"><span lang="fr">Société</span><span lang="en">Company</span></label><input id="f-org" name="org" autocomplete="organization"></div>
+        <div class="f"><label for="f-mail"><span lang="fr">Courriel</span><span lang="en">Email</span></label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
+        <div class="f"><label for="f-tel"><span lang="fr">Téléphone</span><span lang="en">Phone</span></label><input id="f-tel" name="tel" type="tel" autocomplete="tel"></div>
+        <div class="f"><label for="f-type"><span lang="fr">Type d'étude</span><span lang="en">Study type</span></label>
+          <select id="f-type" name="type">
+            <option value="cfd" data-i18n="opt_cfd">Étude CFD</option>
+            <option value="std" data-i18n="opt_std">Simulation thermique dynamique (STD)</option>
+            <option value="bilan" data-i18n="opt_bilan">Bilan thermique</option>
+            <option value="smoke" data-i18n="opt_smoke">Désenfumage</option>
+            <option value="other" data-i18n="opt_other">Plusieurs / à définir</option>
+          </select></div>
+        <div class="f"><label for="f-phase"><span lang="fr">Phase du projet</span><span lang="en">Project stage</span></label>
+          <select id="f-phase" name="phase">
+            <option value="aps" data-i18n="ph_aps">ESQ / APS</option>
+            <option value="apd" data-i18n="ph_apd">APD / PRO</option>
+            <option value="dce" data-i18n="ph_dce">DCE</option>
+            <option value="exe" data-i18n="ph_exe">EXE</option>
+            <option value="exist" data-i18n="ph_exist">Bâtiment existant</option>
+          </select></div>
+        <div class="f full"><label for="f-msg"><span lang="fr">Votre projet</span><span lang="en">Your project</span></label><textarea id="f-msg" name="msg" data-i18n-ph="ph_msg" placeholder="" required></textarea></div>
+        <div class="form-foot">
+          <button class="btn btn-primary" type="submit"><span lang="fr">Envoyer la demande</span><span lang="en">Send request</span></button>
+          <span class="form-status" id="formStatus" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="mark" href="#top" data-i18n-aria="aria_top" aria-label="Retour en haut">
+      <svg class="mark-sym" viewBox="-1 -1 82 74" aria-hidden="true"><use href="#cfdyn-mark"/></svg>
+      <span class="mark-word" style="font-size:1.05rem"><b>CFD</b>YN</span>
+    </a>
+    <span><span lang="fr">Bureau d'études en simulation aéraulique et thermique · France · Suisse</span><span lang="en">Airflow and thermal simulation consultancy · France · Switzerland</span></span>
+    <nav data-i18n-aria="aria_foot" aria-label="Pied de page">
+      <a href="#prestations"><span lang="fr">Prestations</span><span lang="en">Services</span></a>
+      <a href="#labo"><span lang="fr">Cas</span><span lang="en">Cases</span></a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* ================= i18n ================= */
+var DICT={
+fr:{title:"CFDYN · Bureau d'études CFD, STD et bilans thermiques",aria_home:"CFDYN, accueil",aria_nav:"Navigation principale",aria_top:"Retour en haut",aria_foot:"Pied de page",
+aria_hero:"Simulation en direct d'une coupe de local : soufflage d'air froid au plafond, sources de chaleur au sol.",aria_lab:"Visualiseur des cas d'application, calcul en direct.",
+copy:"Copier",copied:"Copié",selected:"Sélectionné",
+opt_cfd:"Étude CFD",opt_std:"Simulation thermique dynamique (STD)",opt_bilan:"Bilan thermique",opt_smoke:"Désenfumage",opt_other:"Plusieurs / à définir",
+ph_aps:"ESQ / APS",ph_apd:"APD / PRO",ph_dce:"DCE",ph_exe:"EXE",ph_exist:"Bâtiment existant",
+ph_msg:"Type de bâtiment, surface ou nombre de locaux, exigences particulières, échéance…",
+f_missing:"Renseignez votre nom, votre courriel et la description du projet.",f_mail:"L'adresse courriel semble incomplète.",f_ok:"Votre demande est préparée dans votre messagerie. Si rien ne s'ouvre, écrivez directement à contact@cfdyn.fr.",
+subj:"Demande de devis",m_name:"Nom",m_org:"Société",m_mail:"Courriel",m_tel:"Téléphone",m_type:"Type d'étude",m_phase:"Phase",
+fT:"Température",fU:"Vitesse",fC:"Traceur",iso:"Isolignes",vec:"Vecteurs",pause:"Pause",play:"Lecture",probe:"sonde",rel:"rel.",
+st_off:"sans déstratificateurs",st_on:"avec déstratificateurs",pass:"Conforme",warn:"À reprendre",info:"Info",
+model:"Modèle",criteria:"Critères en direct",finding:"Ce que montre le calcul",
+l_supply17:"Soufflage 17 °C",l_return:"Reprise",l_equip:"Équipement 2 kW",l_occ:"Occupant",
+l_hepa:"Diffuseur HEPA",l_lowret:"Reprises basses",l_op:"Opérateur",l_bench:"Paillasse",l_eq:"Équipement",
+l_diff:"Diffuseur plafond",l_hood:"Sorbonne",l_exh:"Extraction",l_face:"Façade",
+l_grille:"Soufflage 16 °C",l_pc:"Poste informatique",l_glass:"Vitrage ensoleillé",l_desk:"Bureau",
+l_ramp:"Rampe · air neuf",l_extr:"Extraction",l_jf:"Jet fan",l_fire:"Foyer",l_exit:"Issue",
+l_uh:"Aérotherme",l_door:"Porte de quai 5 °C",l_dstr:"Déstratificateur",l_roof:"Extraction",l_rack:"Racks",
+p_occ:"zone occupée",p_face:"façade",p_head:"tête occupant",p_aisle:"allée amont",p_floor:"1,5 m",p_roof:"toiture",p_bench:"poste de travail",
+c_bench:"Concentration résiduelle au poste (dilution)",c_bench_s:"< 10 % du niveau émis",c_dead:"Zones mortes en zone occupée (|U| < 0,05 m/s)",c_dead_s:"≤ 10 % de la surface",c_wsU:"Vitesse d'air au poste de travail",c_wsU_s:"≤ 0,25 m/s",
+c_face:"Vitesse moyenne en façade",c_face_s:"0,4 – 0,5 m/s",c_cross:"Courant d'air transversal devant la façade",c_cross_s:"< 0,2 m/s",c_esc:"Traceur hors de l'enceinte",c_esc_s:"< 2 %",
+c_occU:"Vitesse max. en zone d'occupation",c_occU_s:"≤ 0,20 m/s",c_dT:"Écart tête-chevilles (1,1 m / 0,1 m)",c_dT_s:"< 3 K",c_head:"Température à 1,1 m",c_head_s:"24 – 26 °C",
+c_back:"Fumées en amont du foyer",c_back_s:"< 2 %",c_exit:"Fumées à l'issue",c_exit_s:"< 2 %",c_aisle:"Vitesse dans l'allée",c_aisle_s:"information",
+c_floor:"Température en zone occupée (1,5 m)",c_floor_s:"≥ 14 °C (consigne réduite, porte ouverte)",c_strat:"Écart sol–toiture (configuration en cours)",c_strat_s:"information",c_gain:"Gain à 1,5 m grâce aux déstratificateurs",c_gain_s:"moyenne avec − moyenne sans",c_uh:"Vitesse moyenne aux postes",c_uh_s:"≤ 0,5 m/s",
+case_1:"Salle propre ISO 8",case_1s:"flux non unidirectionnel, dilution",case_2:"Sorbonne de laboratoire",case_2s:"vitesse en façade",case_3:"Bureau rafraîchi",case_3s:"diffusion et confort",case_4:"Parking couvert",case_4s:"désenfumage, vue en plan",case_5:"Hall industriel",case_5s:"stratification"},
+en:{title:"CFDYN · CFD, thermal simulation and heat load consultancy",aria_home:"CFDYN, home",aria_nav:"Main navigation",aria_top:"Back to top",aria_foot:"Footer",
+aria_hero:"Live simulation of a room section: cold air supplied at ceiling, heat sources at floor level.",aria_lab:"Case study viewer, live computation.",
+copy:"Copy",copied:"Copied",selected:"Selected",
+opt_cfd:"CFD study",opt_std:"Dynamic thermal simulation",opt_bilan:"Heat load calculation",opt_smoke:"Smoke control",opt_other:"Several / not sure yet",
+ph_aps:"Concept",ph_apd:"Developed / technical design",ph_dce:"Tender",ph_exe:"Construction",ph_exist:"Existing building",
+ph_msg:"Building type, floor area or number of rooms, special requirements, deadline…",
+f_missing:"Please enter your name, your email and a project description.",f_mail:"The email address looks incomplete.",f_ok:"Your request is ready in your email app. If nothing opens, write directly to contact@cfdyn.fr.",
+subj:"Quote request",m_name:"Name",m_org:"Company",m_mail:"Email",m_tel:"Phone",m_type:"Study type",m_phase:"Stage",
+fT:"Temperature",fU:"Speed",fC:"Tracer",iso:"Isolines",vec:"Vectors",pause:"Pause",play:"Play",probe:"probe",rel:"rel.",
+st_off:"without destrat. fans",st_on:"with destrat. fans",pass:"Pass",warn:"To revise",info:"Info",
+model:"Model",criteria:"Live criteria",finding:"What the calculation shows",
+l_supply17:"Supply 17 °C",l_return:"Return",l_equip:"Equipment 2 kW",l_occ:"Occupant",
+l_hepa:"HEPA diffuser",l_lowret:"Low returns",l_op:"Operator",l_bench:"Bench",l_eq:"Equipment",
+l_diff:"Ceiling diffuser",l_hood:"Fume hood",l_exh:"Exhaust",l_face:"Sash",
+l_grille:"Supply 16 °C",l_pc:"Workstation",l_glass:"Sunlit glazing",l_desk:"Desk",
+l_ramp:"Ramp · fresh air",l_extr:"Extraction",l_jf:"Jet fan",l_fire:"Fire",l_exit:"Exit",
+l_uh:"Unit heater",l_door:"Loading door 5 °C",l_dstr:"Destrat. fan",l_roof:"Extraction",l_rack:"Racks",
+p_occ:"occupied zone",p_face:"sash",p_head:"occupant head",p_aisle:"upstream aisle",p_floor:"1.5 m",p_roof:"roof",p_bench:"workstation",
+c_bench:"Residual concentration at the workstation (dilution)",c_bench_s:"< 10 % of released level",c_dead:"Dead zones in the occupied zone (|U| < 0.05 m/s)",c_dead_s:"≤ 10 % of the area",c_wsU:"Air speed at the workstation",c_wsU_s:"≤ 0.25 m/s",
+c_face:"Mean face velocity",c_face_s:"0.4 – 0.5 m/s",c_cross:"Cross-draught in front of the sash",c_cross_s:"< 0.2 m/s",c_esc:"Tracer escaping the hood",c_esc_s:"< 2 %",
+c_occU:"Max. speed in occupied zone",c_occU_s:"≤ 0.20 m/s",c_dT:"Head-to-ankle difference (1.1 m / 0.1 m)",c_dT_s:"< 3 K",c_head:"Temperature at 1.1 m",c_head_s:"24 – 26 °C",
+c_back:"Smoke upstream of the fire",c_back_s:"< 2 %",c_exit:"Smoke at the exit",c_exit_s:"< 2 %",c_aisle:"Speed in the aisle",c_aisle_s:"information",
+c_floor:"Occupied-zone temperature (1.5 m)",c_floor_s:"≥ 14 °C (reduced setpoint, door open)",c_strat:"Floor-to-roof difference (current set-up)",c_strat_s:"information",c_gain:"Gain at 1.5 m thanks to destrat. fans",c_gain_s:"mean with − mean without",c_uh:"Mean speed at workstations",c_uh_s:"≤ 0.5 m/s",
+case_1:"ISO 8 cleanroom",case_1s:"non-unidirectional flow, dilution",case_2:"Laboratory fume hood",case_2s:"face velocity",case_3:"Cooled office",case_3s:"distribution and comfort",case_4:"Enclosed car park",case_4s:"smoke control, plan view",case_5:"Industrial hall",case_5s:"stratification"}};
+var lang="fr";
+function t(k){var d=DICT[lang];return d&&d[k]!=null?d[k]:(DICT.fr[k]!=null?DICT.fr[k]:k);}
+function fmt(x,d){var s=x.toFixed(d);return lang==="fr"?s.replace(".",","):s;}
+
+/* ================= Case texts ================= */
+var TEXT={
+cleanroom:{tags:{fr:["Salle propre","ISO 14644-1","ISO 8"],en:["Cleanroom","ISO 14644-1","ISO 8"]},
+ title:{fr:"Dilution des contaminants dans une salle ISO 8",en:"Contaminant dilution in an ISO 8 room"},
+ body:{fr:"En ISO 8, l'air est diffusé par des diffuseurs HEPA en plafond et repris en partie basse : le flux est non unidirectionnel, la propreté repose sur la dilution (taux de brassage de l'ordre de 15 à 25 vol/h). La question : les particules émises au poste sont-elles diluées et évacuées, ou stagnent-elles dans une zone morte ?",en:"In ISO 8, air is supplied through ceiling HEPA diffusers and returned at low level: the flow is non-unidirectional and cleanliness relies on dilution (around 15 to 25 air changes per hour). The question: are particles released at the workstation diluted and removed, or do they stagnate in a dead zone?"},
+ model:{fr:["Deux diffuseurs HEPA en plafond, reprises basses sur les deux parois","Opérateur, paillasse et équipement comme obstacles","Traceur de contamination émis en continu au niveau des mains"],en:["Two ceiling HEPA diffusers, low-level returns on both walls","Operator, bench and equipment as obstacles","Contamination tracer released continuously at hand level"]},
+ finding:{fr:"les jets des diffuseurs créent deux boucles de recirculation qui balaient le poste et entraînent le traceur vers les reprises basses. Le point sensible est la zone entre l'équipement et la paroi, plus faiblement balayée : c'est là qu'on ajuste l'implantation des diffuseurs ou qu'on ajoute une reprise.",en:"the diffuser jets create two recirculation loops that sweep the workstation and carry the tracer to the low returns. The weak point is the zone between the equipment and the wall, which is swept less: that is where diffuser layout is adjusted or a return added."}},
+hood:{tags:{fr:["Laboratoire","NF EN 14175","Confinement"],en:["Laboratory","EN 14175","Containment"]},
+ title:{fr:"Vitesse d'air devant une sorbonne",en:"Air speed in front of a fume hood"},
+ body:{fr:"Une sorbonne confine bien si l'air entre régulièrement par sa façade. Un diffuseur de plafond mal placé crée un courant d'air transversal qui peut arracher les vapeurs hors de l'enceinte. Le panache blanc est le traceur émis dans la sorbonne.",en:"A fume hood contains well when air enters its sash opening evenly. A badly placed ceiling diffuser creates a cross-draught that can pull vapours out of the enclosure. The white plume is the tracer released inside the hood."},
+ model:{fr:["Sorbonne avec guillotine à mi-hauteur, extraction en fond d'enceinte","Diffuseur de plafond orienté vers la façade","Traceur passif émis sur le plan de travail"],en:["Hood with half-open sash, extraction at the back baffle","Ceiling diffuser blowing towards the sash","Passive tracer released on the work surface"]},
+ finding:{fr:"le jet du diffuseur descend le long de la façade et dépasse la vitesse d'entrée visée. On réoriente le diffuseur, on l'éloigne ou on le remplace par un diffuseur à faible induction.",en:"the diffuser jet runs down the sash and exceeds the target face velocity. The fix is to redirect or relocate the diffuser, or switch to a low-induction unit."}},
+office:{tags:{fr:["Confort","ISO 7730","Rafraîchissement"],en:["Comfort","ISO 7730","Cooling"]},
+ title:{fr:"Diffusion d'air et confort dans un bureau rafraîchi",en:"Air distribution and comfort in a cooled office"},
+ body:{fr:"Une grille murale souffle de l'air à 16 °C sous le plafond. Le jet doit rester collé au plafond assez longtemps pour se mélanger avant d'atteindre les occupants, malgré les apports du vitrage et des postes de travail.",en:"A wall grille supplies 16 °C air just below the ceiling. The jet must stay attached long enough to mix before reaching occupants, despite gains from the glazing and workstations."},
+ model:{fr:["Soufflage mural haut, reprise en plafond","Deux occupants, un poste informatique, un vitrage ensoleillé","Convection naturelle prise en compte (flottabilité)"],en:["High wall supply, ceiling return","Two occupants, one workstation, sunlit glazing","Natural convection included (buoyancy)"]},
+ finding:{fr:"le jet froid décroche au droit du panache chaud de l'occupant et tombe dans la zone d'occupation. Réduire la vitesse de soufflage ou allonger la portée sur plafond règle le problème.",en:"the cold jet detaches where it meets the occupant's warm plume and drops into the occupied zone. Lowering supply velocity or extending the ceiling throw solves it."}},
+parking:{tags:{fr:["Désenfumage","Parking couvert","Vue en plan"],en:["Smoke control","Enclosed car park","Plan view"]},
+ title:{fr:"Désenfumage d'un parking par jet fans en cas d'incendie",en:"Jet-fan smoke control in a car park fire"},
+ body:{fr:"Un véhicule brûle. L'air neuf entre par la rampe, des jet fans orientent les fumées vers le puits d'extraction. L'étude vérifie que les fumées ne remontent pas vers la rampe et l'issue, et que les secours gardent un accès dégagé.",en:"A vehicle is on fire. Fresh air enters via the ramp and jet fans push smoke toward the extraction shaft. The study checks that smoke does not travel back to the ramp and exit, and that fire crews keep a clear approach."},
+ model:{fr:["Niveau de parking en plan : places, poteaux, allée de circulation","Amenée d'air par la rampe, extraction mécanique en fond","Jet fans dans l'allée, foyer sur une place"],en:["Car park level in plan: bays, columns, driving aisle","Air intake via the ramp, mechanical extraction at the far end","Jet fans in the aisle, fire source in one bay"]},
+ finding:{fr:"les fumées sont entraînées vers l'extraction et la zone de la rampe reste claire. L'étude sert ensuite à optimiser le nombre et l'implantation des jet fans.",en:"smoke is carried toward the extraction and the ramp area stays clear. The study then optimises the number and position of fans."}},
+hall:{tags:{fr:["Grand volume","Chauffage","Stratification"],en:["Large volume","Heating","Stratification"]},
+ title:{fr:"Stratification d'un entrepôt chauffé par aérothermes",en:"Stratification in a warehouse heated by unit heaters"},
+ body:{fr:"L'air chaud des aérothermes monte sous la toiture pendant que le sol reste froid, surtout quand la porte de quai est ouverte. L'animation alterne deux configurations : sans puis avec déstratificateurs en toiture.",en:"Warm air from unit heaters rises under the roof while the floor stays cold, especially with the loading door open. The animation alternates between two set-ups: without and then with destratification fans at roof level."},
+ model:{fr:["Hall de 12 m de haut, deux aérothermes muraux","Porte de quai ouverte en hiver (air extérieur à 5 °C)","Quatre déstratificateurs en toiture, activés une période sur deux"],en:["12 m high hall, two wall-mounted unit heaters","Loading door open in winter (outdoor air at 5 °C)","Four roof-mounted destratification fans, active every other period"]},
+ finding:{fr:"les déstratificateurs ramènent la chaleur piégée sous la toiture vers la zone occupée : la température à 1,5 m remonte de plusieurs kelvins dès leur activation, à puissance de chauffage identique.",en:"the destratification fans bring heat trapped under the roof back to the occupied zone: the temperature at 1.5 m rises by several kelvins as soon as they start, with the same heating power."}}};
+
+/* ================= Colormaps ================= */
+var MAPS={
+ coolwarm:[[59,76,192],[123,159,249],[221,221,221],[244,154,123],[180,4,38]],
+ viridis:[[68,1,84],[59,82,139],[33,145,140],[94,201,98],[253,231,37]],
+ smoke:[[236,241,244],[190,200,207],[128,140,150],[72,80,89],[26,29,33]],
+ magma:[[0,0,4],[81,18,124],[183,55,121],[252,137,97],[252,253,191]]
+};
+function cssGrad(m){var s=MAPS[m],a=[];for(var k=0;k<s.length;k++)a.push("rgb("+s[k].join(",")+") "+(k*25)+"%");return "linear-gradient(90deg,"+a.join(",")+")";}
+function cmap(m,x){var st=MAPS[m];if(x<0)x=0;if(x>1)x=1;x*=4;var k=Math.min(3,x|0),f=x-k,a=st[k],b=st[k+1];return [a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,a[2]+(b[2]-a[2])*f];}
+
+/* ================= Solver ================= */
+var W=120,H=68,S=(W+2)*(H+2);
+function IX(i,j){return i+(W+2)*j;}
+function makeSim(cfg){
+  var LX=cfg.LX,LZ=cfg.LZ;
+  var u=new Float32Array(S),v=new Float32Array(S),u0=new Float32Array(S),v0=new Float32Array(S);
+  var s=new Float32Array(S).fill(cfg.amb),s0=new Float32Array(S);
+  var tr=cfg.tracer?new Float32Array(S):null;
+  var p=new Float32Array(S),dv=new Float32Array(S);
+  var solid=new Uint8Array(S),bcT=new Uint8Array(S),bcU=new Float32Array(S),bcV=new Float32Array(S),bcS=new Float32Array(S);
+  function ci(x){return Math.max(1,Math.min(W,Math.round(x/LX*W+.5)));}
+  function cj(z){return Math.max(1,Math.min(H,Math.round((1-z/LZ)*H+.5)));}
+  function rect(r){var i0=ci(r.x0),i1=Math.max(i0,ci(r.x1)-1),j0=cj(r.z1),j1=Math.max(j0,cj(r.z0)-1);return {i0:i0,i1:i1,j0:j0,j1:j1};}
+  (cfg.bcs||[]).forEach(function(b){
+    var horiz=(b.side==="top"||b.side==="bottom");
+    var a=horiz?ci(b.a):cj(b.b), e=horiz?Math.max(ci(b.a),ci(b.b)-1):Math.max(cj(b.b),cj(b.a)-1);
+    b._a=a;b._e=e;
+    for(var k=a;k<=e;k++){
+      var g=b.side==="top"?IX(k,0):b.side==="bottom"?IX(k,H+1):b.side==="left"?IX(0,k):IX(W+1,k);
+      bcT[g]=b.type==="in"?1:2;bcU[g]=b.u||0;bcV[g]=b.v||0;bcS[g]=b.s!=null?b.s:cfg.amb;
+    }
+  });
+  function cellList(r){var poly=null,arm=null,q;
+    if(r.shape==="person"){poly=personPoly(r);arm=r.arm?armSeg(r):null;var xs=poly.map(function(p){return p[0];}),xa=arm?[arm.x0-arm.w,arm.x1+arm.w]:[];
+      q=rect({x0:Math.min.apply(null,xs.concat(xa)),x1:Math.max.apply(null,xs.concat(xa)),z0:r.z0,z1:r.z1});}else q=rect(r);
+    var L=[];
+    for(var j=q.j0;j<=q.j1;j++)for(var i=q.i0;i<=q.i1;i++){
+      if(r.shape==="person"){var xm=(i-.5)/W*LX,zm=(1-(j-.5)/H)*LZ;if(!inPoly(poly,xm,zm)&&!(arm&&nearSeg(arm,xm,zm)))continue;}
+      L.push(IX(i,j));}
+    return {q:q,L:L};}
+  var solids=(cfg.solids||[]).map(function(r){var c=cellList(r),q=c.q;q.key=r.key;q.lx=r.lx;q.lz=r.lz;q.align=r.align;q.shape=r.shape;q.arm=r.arm;q.m=r;for(var k=0;k<c.L.length;k++)solid[c.L[k]]=1;return q;});
+  var sources=(cfg.sources||[]).map(function(r){var c=cellList(r);if(r.solid)for(var k=0;k<c.L.length;k++)solid[c.L[k]]=1;return {L:c.L,q:c.q,val:r.s,key:r.key,outline:r.outline,lx:r.lx,lz:r.lz,align:r.align,shape:r.shape,arm:r.arm,m:r,solidSrc:!!r.solid};});
+  var tsources=(cfg.tsources||[]).map(function(r){return cellList(r).L;});
+  var fans=(cfg.fans||[]).map(function(r){var c=cellList(r);return {L:c.L,q:c.q,fu:r.fu||0,fv:r.fv||0,phase:r.phase,key:r.key,lx:r.lx,lz:r.lz,hide:r.hide};});
+  var outlines=(cfg.outlines||[]).map(function(r){var q=rect(r);q.key=r.key;q.lx=r.lx;q.lz=r.lz;return q;});
+  // k: 0 neumann, 1 u, 2 v, 3 p, 4 scalar, 5 tracer
+  function bval(k,g,n){var ty=bcT[g];
+    if(ty===1)return k===1?bcU[g]:k===2?bcV[g]:k===4?bcS[g]:k===5?0:n;
+    if(ty===2)return k===3?-n:n; return null;}
+  function setBnd(k,x){var i,j,g,n,b;
+    for(i=1;i<=W;i++){
+      g=IX(i,0);n=x[IX(i,1)];b=bval(k,g,n);x[g]=b!==null?b:(k===2?-n:n);
+      g=IX(i,H+1);n=x[IX(i,H)];b=bval(k,g,n);x[g]=b!==null?b:(k===2?-n:n);}
+    for(j=1;j<=H;j++){
+      g=IX(0,j);n=x[IX(1,j)];b=bval(k,g,n);x[g]=b!==null?b:(k===1?-n:n);
+      g=IX(W+1,j);n=x[IX(W,j)];b=bval(k,g,n);x[g]=b!==null?b:(k===1?-n:n);}
+    x[IX(0,0)]=.5*(x[IX(1,0)]+x[IX(0,1)]);x[IX(0,H+1)]=.5*(x[IX(1,H+1)]+x[IX(0,H)]);
+    x[IX(W+1,0)]=.5*(x[IX(W,0)]+x[IX(W+1,1)]);x[IX(W+1,H+1)]=.5*(x[IX(W,H+1)]+x[IX(W+1,H)]);}
+  function lin(k,x,x0,a,c,it){
+    for(var q=0;q<it;q++){
+      for(var j=1;j<=H;j++){var r=(W+2)*j;for(var i=1;i<=W;i++){var n=r+i;x[n]=(x0[n]+a*(x[n-1]+x[n+1]+x[n-W-2]+x[n+W+2]))/c;}}
+      setBnd(k,x);}}
+  function advect(k,d,d0,uu,vv){
+    for(var j=1;j<=H;j++)for(var i=1;i<=W;i++){
+      var n=IX(i,j),x=i-uu[n],y=j-vv[n];
+      if(x<.5)x=.5;if(x>W+.5)x=W+.5;if(y<.5)y=.5;if(y>H+.5)y=H+.5;
+      var i0=x|0,j0=y|0,s1=x-i0,t1=y-j0,a0=1-s1,b0=1-t1;
+      d[n]=a0*(b0*d0[IX(i0,j0)]+t1*d0[IX(i0,j0+1)])+s1*(b0*d0[IX(i0+1,j0)]+t1*d0[IX(i0+1,j0+1)]);}
+    setBnd(k,d);}
+  function zeroSolids(){for(var n=0;n<S;n++)if(solid[n]){u[n]=0;v[n]=0;}}
+  function project(){
+    for(var j=1;j<=H;j++)for(var i=1;i<=W;i++){var n=IX(i,j);dv[n]=-.5*(u[n+1]-u[n-1]+v[n+W+2]-v[n-W-2]);p[n]=0;}
+    setBnd(0,dv);setBnd(3,p);lin(3,p,dv,1,4,cfg.iters||24);
+    for(var j2=1;j2<=H;j2++)for(var i2=1;i2<=W;i2++){var m=IX(i2,j2);u[m]-=.5*(p[m+1]-p[m-1]);v[m]-=.5*(p[m+W+2]-p[m-W-2]);}
+    setBnd(1,u);setBnd(2,v);zeroSolids();}
+  var steps=0;
+  function phase(){return cfg.toggle?(Math.floor(steps/cfg.toggle)%2):0;}
+  function step(){
+    var ph=phase(),n,k,q;
+    for(k=0;k<fans.length;k++){var F=fans[k];if(F.phase!=null&&F.phase!==ph)continue;for(q=0;q<F.L.length;q++){n=F.L[q];u[n]+=F.fu;v[n]+=F.fv;}}
+    var bu=cfg.buoy||0,amb=cfg.amb,dmp=cfg.damp||.997,cap=cfg.cap||1.6;
+    for(var j=1;j<=H;j++)for(var i=1;i<=W;i++){n=IX(i,j);
+      if(bu)v[n]-=bu*(s[n]-amb);
+      u[n]*=dmp;v[n]*=dmp;var sp=Math.hypot(u[n],v[n]);if(sp>cap){u[n]*=cap/sp;v[n]*=cap/sp;}}
+    zeroSolids();
+    u0.set(u);v0.set(v);advect(1,u,u0,u0,v0);advect(2,v,v0,u0,v0);zeroSolids();project();
+    s0.set(s);advect(4,s,s0,u,v);s0.set(s);lin(4,s,s0,cfg.diff||.05,1+4*(cfg.diff||.05),2);
+    var rl=cfg.relax||0,ra=cfg.relaxTo!=null?cfg.relaxTo:amb;
+    if(rl)for(n=0;n<S;n++)s[n]+=(ra-s[n])*rl;
+    for(n=0;n<S;n++)if(solid[n])s[n]=amb;
+    for(k=0;k<sources.length;k++){var Sx=sources[k];for(q=0;q<Sx.L.length;q++)s[Sx.L[q]]=Sx.val;}
+    if(tr){s0.set(tr);advect(5,tr,s0,u,v);for(n=0;n<S;n++){tr[n]*=.999;if(solid[n])tr[n]=0;}
+      for(k=0;k<tsources.length;k++)for(q=0;q<tsources[k].length;q++)tr[tsources[k][q]]=1;}
+    steps++;}
+  function sample(f,x,y){if(x<.5)x=.5;if(x>W+.5)x=W+.5;if(y<.5)y=.5;if(y>H+.5)y=H+.5;var i0=x|0,j0=y|0,a=x-i0,b=y-j0;
+    return (1-a)*((1-b)*f[IX(i0,j0)]+b*f[IX(i0,j0+1)])+a*((1-b)*f[IX(i0+1,j0)]+b*f[IX(i0+1,j0+1)]);}
+  function gx(xm){return xm/LX*W+.5;} function gy(zm){return (1-zm/LZ)*H+.5;}
+  function at(xm,zm){var x=gx(xm),y=gy(zm);return {s:sample(s,x,y),tr:tr?sample(tr,x,y):0,sp:Math.hypot(sample(u,x,y),sample(v,x,y))*cfg.vscale,
+    solid:solid[IX(Math.max(1,Math.min(W,Math.round(x))),Math.max(1,Math.min(H,Math.round(y))))]};}
+  function region(r,f){var q=rect(r),sum=0,mx=-1e9,cnt=0;for(var j=q.j0;j<=q.j1;j++)for(var i=q.i0;i<=q.i1;i++){var n=IX(i,j);if(solid[n])continue;
+    var val=f==="sp"?Math.hypot(u[n],v[n])*cfg.vscale:f==="tr"?tr[n]:f==="vy"?v[n]*cfg.vscale:s[n];sum+=val;if(val>mx)mx=val;cnt++;}
+    return {mean:cnt?sum/cnt:0,max:cnt?mx:0};}
+  return {cfg:cfg,u:u,v:v,s:s,tr:tr,solid:solid,solids:solids,sources:sources,fans:fans,outlines:outlines,step:step,at:at,region:region,sample:sample,phase:phase,get steps(){return steps;}};
+}
+
+/* ================= Case definitions ================= */
+var CASES={
+ hero:{LX:12,LZ:6.8,file:"coupe_y2.5",kind:"T",amb:23,tmin:17,tmax:29,umax:.6,
+  bcs:[{side:"top",a:1.5,b:2.3,type:"in",u:.18,v:.55,s:17,key:"l_supply17"},{side:"top",a:10.4,b:11.1,type:"out",key:"l_return"}],
+  sources:[{x0:7.5,x1:8.8,z0:0,z1:.7,s:30,key:"l_equip",outline:1},{x0:3.85,x1:4.35,z0:0,z1:1.75,s:28,key:"l_occ",shape:"person",solid:true,face:1}],
+  buoy:.003,relax:.009,diff:.1,vscale:.5,tick:3,probes:[{x:6,z:1.1,key:"p_occ"}],isoLevels:[19,21,23,25,27],crits:[]},
+ cleanroom:{LX:6,LZ:3.2,file:"cas01_salle_propre_iso8",kind:"U",amb:0,cmax:.3,umax:.6,tracer:true,
+  bcs:[{side:"top",a:1.0,b:1.6,type:"in",v:.5,u:-.12,s:0,key:"l_hepa"},{side:"top",a:4.4,b:5.0,type:"in",v:.5,u:.12,s:0},{side:"left",a:.05,b:.5,type:"out",key:"l_lowret"},{side:"right",a:.05,b:.5,type:"out"}],
+  solids:[{x0:1.55,x1:2.05,z0:0,z1:1.8,key:"l_op",shape:"person",arm:1,face:1},{x0:2.5,x1:4.6,z0:.86,z1:.94,key:"l_bench",lz:.97,lx:4.0},{x0:3.3,x1:3.9,z0:.94,z1:1.45,key:"l_eq"}],
+  tsources:[{x0:2.32,x1:2.46,z0:1.02,z1:1.14}],
+  buoy:0,relax:0,diff:.03,damp:.999,vscale:.9,tick:1,probes:[{x:3.0,z:1.2,key:"p_bench"}],isoLevels:[.05,.1,.2],
+  crits:[{k:"c_bench",f:function(S){return S.region({x0:2.5,x1:4.6,z0:.95,z1:1.8},"tr").mean*100;},u:"%",d:1,ok:function(v){return v<10;}},
+         {k:"c_dead",f:function(S){var q=0,n=0;for(var x=.3;x<=5.7;x+=.15)for(var z=.2;z<=1.8;z+=.15){var r=S.at(x,z);if(r.solid)continue;n++;if(r.sp<.05)q++;}return n?q/n*100:0;},u:"%",d:0,ok:function(v){return v<=10;}},
+         {k:"c_wsU",f:function(S){return S.region({x0:2.2,x1:3.2,z0:1.0,z1:1.7},"sp").mean;},u:"m/s",d:2,ok:function(v){return v<=.25;}}]},
+ hood:{LX:6.4,LZ:3.6,file:"cas02_sorbonne_EN14175",kind:"U",amb:0,umax:1,cmax:.4,
+  bcs:[{side:"top",a:3.5,b:4.1,type:"in",u:.2,v:.3,key:"l_diff"},{side:"right",a:1.0,b:1.95,type:"out",key:"l_exh"}],
+  solids:[{x0:5.2,x1:6.4,z0:2.0,z1:2.35,key:"l_hood",lz:2.45},{x0:5.2,x1:5.32,z0:1.45,z1:2.0},{x0:5.2,x1:6.4,z0:0,z1:.9}],
+  tracer:true,tsources:[{x0:5.7,x1:6.1,z0:.9,z1:1.0}],
+  labels:[{x:4.1,z:1.05,key:"l_face"}],
+  buoy:0,relax:0,diff:.02,damp:.9995,vscale:3,tick:1,probes:[{x:5.05,z:1.2,key:"p_face"}],isoLevels:[.2,.4,.6],
+  crits:[{k:"c_face",f:function(S){return S.region({x0:5.0,x1:5.2,z0:.95,z1:1.4},"sp").mean;},u:"m/s",d:2,ok:function(v){return v>=.4&&v<=.5;}},
+         {k:"c_cross",f:function(S){return S.region({x0:4.2,x1:5.0,z0:1.0,z1:2.0},"sp").max;},u:"m/s",d:2,ok:function(v){return v<.2;}},
+         {k:"c_esc",f:function(S){return S.region({x0:3.0,x1:5.1,z0:.2,z1:3.3},"tr").mean*100;},u:"%",d:1,ok:function(v){return v<2;}}]},
+ office:{LX:6,LZ:3.4,file:"cas03_bureau_ISO7730",kind:"T",amb:24,tmin:16,tmax:28,umax:.6,
+  bcs:[{side:"left",a:3.02,b:3.3,type:"in",u:.8,s:16,key:"l_grille"},{side:"top",a:5.1,b:5.6,type:"out",key:"l_return"}],
+  solids:[{x0:2.1,x1:3.3,z0:.72,z1:.78,key:"l_desk",lx:2.9,lz:.55}],
+  sources:[{x0:1.6,x1:2.1,z0:0,z1:1.75,s:28,key:"l_occ",shape:"person",solid:true,face:1},{x0:3.8,x1:4.3,z0:0,z1:1.75,s:28,shape:"person",solid:true,face:-1},{x0:2.5,x1:2.85,z0:.78,z1:1.15,s:31,key:"l_pc",outline:1,lx:2.45,lz:1.22},{x0:5.92,x1:6.0,z0:.9,z1:2.6,s:27,key:"l_glass",lx:5.85,lz:2.7,align:"right"}],
+  buoy:.0028,relax:.008,diff:.08,vscale:2.2,tick:1,probes:[{x:2.4,z:1.1,key:"p_head"}],isoLevels:[18,20,22,24,26],
+  crits:[{k:"c_occU",f:function(S){var m=0;for(var x=1.0;x<=5.4;x+=.1){if((x>1.3&&x<2.4)||(x>2.3&&x<3.05)||(x>3.5&&x<4.6))continue;for(var z=.6;z<=1.7;z+=.5){var v=S.at(x,z).sp;if(v>m)m=v;}}return m;},u:"m/s",d:2,ok:function(v){return v<=.2;}},
+         {k:"c_dT",f:function(S){return Math.abs(S.at(2.4,1.1).s-S.at(2.4,.1).s);},u:"K",d:1,ok:function(v){return v<3;}},
+         {k:"c_head",f:function(S){return S.at(2.4,1.1).s;},u:"°C",d:1,ok:function(v){return v>=24&&v<=26;}}]},
+ parking:{LX:40,LZ:22.7,plan:true,file:"cas04_parking_plan_z1.8",kind:"C",light:true,amb:0,cmax:.5,umax:2,
+  bcs:[{side:"left",a:8.6,b:14,type:"in",u:.32,s:0,key:"l_ramp"},{side:"right",a:8.6,b:14,type:"out",key:"l_extr"}],
+  solids:(function(){var L=[],x;for(x=1.5;x<37.5;x+=2.6){if(Math.abs(x-19.7)<.1)continue;L.push({x0:x,x1:x+2.05,z0:17.8,z1:22.4,shape:"car"});}for(x=5.2;x<37.5;x+=2.6)L.push({x0:x,x1:x+2.05,z0:.3,z1:4.9,shape:"car"});
+    [8,16,24,32].forEach(function(px){L.push({x0:px,x1:px+.7,z0:6.4,z1:7.1});L.push({x0:px,x1:px+.7,z0:15.6,z1:16.3});});return L;})(),
+  sources:[{x0:19.7,x1:21.75,z0:17.8,z1:22.4,s:1,key:"l_fire",lx:19.6,lz:16.9,shape:"car",fire:1}],
+  bays:[{z0:17.8,z1:22.4,x0:1.5,n:14},{z0:.3,z1:4.9,x0:5.2,n:13}],ramp:{x0:0,x1:2.4,z0:8.6,z1:14},extr:{x0:38.4,x1:40,z0:8.6,z1:14},aisle:{z:11.2,x0:4,x1:37},
+  fans:[{x0:19.9,x1:21.55,z0:17.0,z1:19.6,fv:.05,hide:1},{x0:8,x1:9.5,z0:10.8,z1:11.6,fu:.035,key:"l_jf",lx:6.8,lz:12.4},{x0:18,x1:19.5,z0:10.8,z1:11.6,fu:.035},{x0:28,x1:29.5,z0:10.8,z1:11.6,fu:.035}],
+  outlines:[{x0:0,x1:.6,z0:1.2,z1:4.4,key:"l_exit",lx:.9,lz:2.2}],
+  buoy:0,relax:.0003,diff:.07,vscale:3,tick:10,probes:[{x:12,z:11.5,key:"p_aisle"}],isoLevels:[.05,.15,.3],
+  crits:[{k:"c_back",f:function(S){return S.region({x0:1,x1:18,z0:5.5,z1:17.5},"s").mean*100;},u:"%",d:1,ok:function(v){return v<2;}},
+         {k:"c_exit",f:function(S){return S.region({x0:.5,x1:4,z0:1,z1:6},"s").mean*100;},u:"%",d:1,ok:function(v){return v<2;}},
+         {k:"c_aisle",f:function(S){return S.region({x0:5,x1:35,z0:8,z1:15},"sp").mean;},u:"m/s",d:2,info:true}]},
+ hall:{LX:24,LZ:13.6,file:"cas05_hall_stratification",kind:"T",amb:15,tmin:8,tmax:28,umax:.8,
+  bcs:[{side:"left",a:.1,b:2.4,type:"in",u:.03,s:6,key:"l_door"},{side:"top",a:20.5,b:21.5,type:"out",key:"l_roof"}],
+  solids:[{x0:.1,x1:.9,z0:4.8,z1:5.9,key:"l_uh",lx:1.0,lz:6.5},{x0:23.1,x1:23.9,z0:4.8,z1:5.9,lx:23.0,lz:6.5,align:"right"}],
+  sources:[{x0:.9,x1:1.5,z0:5,z1:5.7,s:46},{x0:22.5,x1:23.1,z0:5,z1:5.7,s:46}],
+  fans:[{x0:.9,x1:3.6,z0:4.95,z1:5.75,fu:.3,fv:.04,hide:1},{x0:20.4,x1:23.1,z0:4.95,z1:5.75,fu:-.3,fv:.04,hide:1},
+        {x0:4.3,x1:5.5,z0:12.5,z1:13.3,fv:.4,phase:1,key:"l_dstr",lx:3.9,lz:12.2},{x0:4.6,x1:5.2,z0:2.2,z1:12.5,fv:.13,phase:1,hide:1},{x0:9.1,x1:10.299999999999999,z0:12.5,z1:13.3,fv:.4,phase:1},{x0:9.4,x1:10.0,z0:2.2,z1:12.5,fv:.13,phase:1,hide:1},{x0:13.9,x1:15.1,z0:12.5,z1:13.3,fv:.4,phase:1},{x0:14.200000000000001,x1:14.8,z0:2.2,z1:12.5,fv:.13,phase:1,hide:1},{x0:18.7,x1:19.9,z0:12.5,z1:13.3,fv:.4,phase:1},{x0:19.0,x1:19.599999999999998,z0:2.2,z1:12.5,fv:.13,phase:1,hide:1}],
+  buoy:.0035,relax:.0009,relaxTo:11,diff:.08,vscale:2.5,tick:5,toggle:1200,probes:[{x:12,z:1.5,key:"p_floor"},{x:12,z:11.5,key:"p_roof"}],isoLevels:[10,13,16,19,22],
+  crits:[{k:"c_floor",f:function(S){var v=S.region({x0:5,x1:21,z0:1.2,z1:1.8},"s").mean;var ph=S.phase();hallMem[ph]=hallMem[ph]==null?v:hallMem[ph]*.9+v*.1;return v;},u:"°C",d:1,ok:function(v){return v>=14;}},
+         {k:"c_gain",f:function(S){return (hallMem[0]!=null&&hallMem[1]!=null)?(hallMem[1]-hallMem[0]):NaN;},u:"K",d:1,info:true},
+         {k:"c_strat",f:function(S){return S.region({x0:5,x1:21,z0:10.5,z1:12.4},"s").mean-S.region({x0:5,x1:21,z0:1.2,z1:1.8},"s").mean;},u:"K",d:1,info:true},
+         {k:"c_uh",f:function(S){return S.region({x0:3,x1:21,z0:.2,z1:2},"sp").mean;},u:"m/s",d:2,ok:function(v){return v<=.5;}}]}
+};
+var hallMem={0:null,1:null};
+var ORDER=["cleanroom","hood","office","parking","hall"];
+var sims={};
+function getSim(id){if(!sims[id])sims[id]=makeSim(CASES[id]);return sims[id];}
+
+/* ================= Fields ================= */
+function fieldSpec(c,f){
+  if(f==="T")return {map:"coolwarm",min:c.tmin,max:c.tmax,unit:"°C",qty:"T",dec:1};
+  if(f==="U")return {map:"viridis",min:0,max:c.umax,unit:"m/s",qty:"|U|",dec:2};
+  return {map:c.light?"smoke":"magma",min:0,max:c.cmax||1,unit:t("rel"),qty:"C",dec:2};}
+function fieldsOf(c){var L=[];if(c.kind==="T")L.push("T");if(c.kind==="C")L.push("C");L.push("U");if(c.tracer)L.push("C");return L;}
+function cellVal(sim,f,n){var c=sim.cfg;if(f==="U")return Math.hypot(sim.u[n],sim.v[n])*c.vscale;if(f==="C"&&sim.tr)return sim.tr[n];return sim.s[n];}
+function fieldArray(sim,f){if(f==="C"&&sim.tr)return sim.tr;return sim.s;}
+
+/* ================= Shapes ================= */
+// Anatomical standing profile, facing -x (left); coords in metres for a 1.75 m body, x = 0 at body axis
+var PROFILE=[[0,1.75],[-.06,1.735],[-.095,1.69],[-.105,1.65],[-.12,1.615],[-.125,1.595],[-.105,1.575],[-.10,1.555],[-.095,1.535],[-.07,1.515],[-.055,1.49],[-.055,1.46],[-.075,1.435],[-.105,1.40],[-.12,1.33],[-.115,1.25],[-.105,1.16],[-.11,1.06],[-.125,.98],[-.135,.90],[-.135,.82],[-.12,.75],[-.10,.72],[-.085,.74],[-.08,.66],[-.075,.55],[-.082,.48],[-.07,.40],[-.055,.28],[-.045,.15],[-.05,.09],[-.10,.05],[-.18,.025],[-.22,.01],[-.21,0],[.06,0],[.08,.03],[.06,.09],[.05,.16],[.075,.30],[.09,.38],[.06,.47],[.055,.55],[.09,.66],[.125,.78],[.135,.88],[.115,.98],[.095,1.06],[.13,1.13],[.12,1.20],[.10,1.28],[.115,1.36],[.10,1.43],[.06,1.475],[.035,1.51],[.045,1.56],[.085,1.615],[.09,1.665],[.06,1.72]];
+function smoothPoly(pts,sub){var out=[],n=pts.length;for(var i=0;i<n;i++){var p0=pts[(i-1+n)%n],p1=pts[i],p2=pts[(i+1)%n],p3=pts[(i+2)%n];
+  for(var k=0;k<sub;k++){var t=k/sub,t2=t*t,t3=t2*t;
+    out.push([.5*((2*p1[0])+(-p0[0]+p2[0])*t+(2*p0[0]-5*p1[0]+4*p2[0]-p3[0])*t2+(-p0[0]+3*p1[0]-3*p2[0]+p3[0])*t3),
+              .5*((2*p1[1])+(-p0[1]+p2[1])*t+(2*p0[1]-5*p1[1]+4*p2[1]-p3[1])*t2+(-p0[1]+3*p1[1]-3*p2[1]+p3[1])*t3)]);}}
+  return out;}
+var PROFILE_S=smoothPoly(PROFILE,5);
+function personPoly(r){var sc=(r.z1-r.z0)/1.75,xc=(r.x0+r.x1)/2,f=r.face||1;return PROFILE_S.map(function(q){return [xc-f*q[0]*sc,r.z0+q[1]*sc];});}
+function inPoly(poly,x,y){var c=false;for(var i=0,j=poly.length-1;i<poly.length;j=i++){var xi=poly[i][0],yi=poly[i][1],xj=poly[j][0],yj=poly[j][1];
+  if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi))c=!c;}return c;}
+function armSeg(r){var sc=(r.z1-r.z0)/1.75,xc=(r.x0+r.x1)/2,f=r.face||1;return {x0:xc+f*.04*sc,z0:r.z0+1.40*sc,x1:xc+f*.52*sc,z1:r.z0+1.06*sc,w:.075*sc};}
+function nearSeg(a,x,y){var dx=a.x1-a.x0,dy=a.z1-a.z0,L2=dx*dx+dy*dy,t=Math.max(0,Math.min(1,((x-a.x0)*dx+(y-a.z0)*dy)/L2));var px=a.x0+t*dx,py=a.z0+t*dy;return Math.hypot(x-px,y-py)<=a.w/2;}
+function drawPerson(ctx,r,mx,mz,fill,stroke,dpr){var poly=personPoly(r);ctx.beginPath();for(var k=0;k<poly.length;k++){var X=mx(poly[k][0]),Y=mz(poly[k][1]);if(k===0)ctx.moveTo(X,Y);else ctx.lineTo(X,Y);}
+  ctx.closePath();ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle=stroke;ctx.lineWidth=1.1*dpr;ctx.lineJoin="round";ctx.stroke();
+  if(r.arm){var a=armSeg(r);ctx.save();ctx.lineCap="round";ctx.lineWidth=Math.abs(mz(0)-mz(a.w));ctx.strokeStyle=fill;ctx.beginPath();ctx.moveTo(mx(a.x0),mz(a.z0));ctx.lineTo(mx(a.x1),mz(a.z1));ctx.stroke();
+    ctx.lineWidth=Math.abs(mz(0)-mz(a.w))+2.2*dpr;ctx.strokeStyle=stroke;ctx.globalCompositeOperation="destination-over";ctx.stroke();ctx.restore();}}
+function drawPlan(ctx,c,CW,CH,dpr){function mx(x){return x/c.LX*CW;}function mz(z){return (1-z/c.LZ)*CH;}
+  ctx.save();ctx.strokeStyle="#FFFFFF";ctx.lineWidth=1.4*dpr;ctx.beginPath();
+  (c.bays||[]).forEach(function(b){for(var k=0;k<=b.n;k++){var x=b.x0+k*2.6;ctx.moveTo(mx(x),mz(b.z0));ctx.lineTo(mx(x),mz(b.z1));}ctx.moveTo(mx(b.x0),mz(b.z0));ctx.lineTo(mx(b.x0+b.n*2.6),mz(b.z0));ctx.moveTo(mx(b.x0),mz(b.z1));ctx.lineTo(mx(b.x0+b.n*2.6),mz(b.z1));});
+  ctx.stroke();
+  if(c.aisle){ctx.strokeStyle="rgba(15,27,36,.28)";ctx.lineWidth=1.6*dpr;ctx.beginPath();for(var x=c.aisle.x0;x<c.aisle.x1;x+=6){var X=mx(x),Y=mz(c.aisle.z),h=.9/c.LZ*CH;ctx.moveTo(X-h*.6,Y-h);ctx.lineTo(X,Y);ctx.lineTo(X-h*.6,Y+h);}ctx.stroke();}
+  function hatch(r,col){var X0=mx(r.x0),X1=mx(r.x1),Y0=mz(r.z1),Y1=mz(r.z0);ctx.save();ctx.beginPath();ctx.rect(X0,Y0,X1-X0,Y1-Y0);ctx.clip();ctx.fillStyle="rgba(255,255,255,.5)";ctx.fillRect(X0,Y0,X1-X0,Y1-Y0);
+    ctx.strokeStyle=col;ctx.lineWidth=dpr;ctx.beginPath();var st=7*dpr;for(var k=-(Y1-Y0);k<(X1-X0);k+=st){ctx.moveTo(X0+k,Y1);ctx.lineTo(X0+k+(Y1-Y0),Y0);}ctx.stroke();ctx.restore();
+    ctx.strokeStyle=col;ctx.lineWidth=1.2*dpr;ctx.strokeRect(X0,Y0,X1-X0,Y1-Y0);}
+  if(c.ramp)hatch(c.ramp,"#2B47B0");if(c.extr)hatch(c.extr,"#1C2A36");
+  ctx.restore();}
+function drawFire(ctx,r,mx,mz,dpr){var cx=mx((r.x0+r.x1)/2),cy=mz((r.z0+r.z1)/2),R=Math.abs(mx(r.x1)-mx(r.x0))*.55;
+  var g=ctx.createRadialGradient(cx,cy,R*.1,cx,cy,R);g.addColorStop(0,"rgba(255,220,120,.95)");g.addColorStop(.45,"rgba(255,120,40,.8)");g.addColorStop(1,"rgba(180,4,38,0)");
+  ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.fill();}
+function rr(ctx,x,y,w,h,rad){rad=Math.min(rad,w/2,h/2);ctx.beginPath();ctx.moveTo(x+rad,y);ctx.lineTo(x+w-rad,y);ctx.quadraticCurveTo(x+w,y,x+w,y+rad);ctx.lineTo(x+w,y+h-rad);ctx.quadraticCurveTo(x+w,y+h,x+w-rad,y+h);ctx.lineTo(x+rad,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-rad);ctx.lineTo(x,y+rad);ctx.quadraticCurveTo(x,y,x+rad,y);ctx.closePath();}
+function drawCar(ctx,r,mx,mz,fill,stroke,dpr,light){var X0=mx(r.x0+.18),X1=mx(r.x1-.18),Y0=mz(r.z1-.15),Y1=mz(r.z0+.15),Wd=X1-X0,Hd=Y1-Y0;
+  var wheelW=Wd*.14,wheelH=Hd*.13;ctx.fillStyle=light?"#1C2A36":"#0E151B";
+  [[X0-wheelW*.5,Y0+Hd*.12],[X1-wheelW*.5,Y0+Hd*.12],[X0-wheelW*.5,Y1-Hd*.12-wheelH],[X1-wheelW*.5,Y1-Hd*.12-wheelH]].forEach(function(w){rr(ctx,w[0],w[1],wheelW,wheelH,wheelW*.3);ctx.fill();});
+  rr(ctx,X0,Y0,Wd,Hd,Wd*.22);ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle=stroke;ctx.lineWidth=dpr;ctx.stroke();
+  rr(ctx,X0+Wd*.14,Y0+Hd*.30,Wd*.72,Hd*.40,Wd*.1);ctx.fillStyle=light?"rgba(255,255,255,.35)":"rgba(255,255,255,.16)";ctx.fill();
+  ctx.fillStyle=light?"rgba(255,255,255,.55)":"rgba(255,255,255,.28)";ctx.fillRect(X0+Wd*.18,Y0+Hd*.22,Wd*.64,Hd*.07);ctx.fillRect(X0+Wd*.2,Y0+Hd*.72,Wd*.6,Hd*.05);}
+
+/* ================= Viewer ================= */
+function Viewer(el,opts){
+  var V=this;V.el=el;V.compact=!!opts.compact;V.field=null;V.iso=true;V.vec=true;V.paused=false;V.visible=false;V.frame=0;V.dpr=1;
+  el.innerHTML='<div class="vbar"><span class="vfile"><span class="vdots" aria-hidden="true"><i></i><i></i><i></i></span><b class="vname"></b></span>'+
+    (V.compact?'<span class="vctl"><span class="seg vfields" role="group"></span></span>':'')+'<span class="vstate"></span></div>'+(V.compact?'':'<div class="vbar vbar2"><span class="vctl"><span class="seg vfields" role="group"></span><button type="button" class="tog viso" aria-pressed="true"></button><button type="button" class="tog vvec" aria-pressed="true"></button><button type="button" class="tog vpause" aria-pressed="false"></button></span></div>')+
+    '<div class="vstage"><canvas class="field"></canvas><div class="probe" hidden></div></div>'+
+    '<div class="vfoot"><span class="cb-lab"></span><div><div class="cbar"></div><div class="cticks"></div></div><div class="readout"></div></div>';
+  V.cv=el.querySelector("canvas.field");V.ctx=V.cv.getContext("2d");
+  V.probeEl=el.querySelector(".probe");V.ro=el.querySelector(".readout");V.st=el.querySelector(".vstate");V.name=el.querySelector(".vname");
+  V.cbl=el.querySelector(".cb-lab");V.ticks=el.querySelector(".cticks");V.cbar=el.querySelector(".cbar");V.segs=el.querySelector(".vfields");
+  V.off=document.createElement("canvas");V.off.width=W;V.off.height=H;V.octx=V.off.getContext("2d");V.img=V.octx.createImageData(W,H);
+  V.trOff=document.createElement("canvas");V.trOff.width=W;V.trOff.height=H;V.tctx=V.trOff.getContext("2d");V.timg=V.tctx.createImageData(W,H);
+  V.parts=[];
+  if(!V.compact){
+    V.bIso=el.querySelector(".viso");V.bVec=el.querySelector(".vvec");V.bPause=el.querySelector(".vpause");
+    V.bIso.addEventListener("click",function(){V.iso=!V.iso;V.bIso.setAttribute("aria-pressed",String(V.iso));V.draw();});
+    V.bVec.addEventListener("click",function(){V.vec=!V.vec;V.bVec.setAttribute("aria-pressed",String(V.vec));V.draw();});
+    V.bPause.addEventListener("click",function(){V.paused=!V.paused;V.bPause.setAttribute("aria-pressed",String(V.paused));V.labels();});
+  }else{V.vec=false;}
+  V.cv.addEventListener("pointermove",function(e){V.hover(e);});
+  V.cv.addEventListener("pointerleave",function(){V.probeEl.hidden=true;});
+  if("IntersectionObserver" in window)new IntersectionObserver(function(es){V.visible=es[0].isIntersecting;},{rootMargin:"100px"}).observe(el);else V.visible=true;
+}
+Viewer.prototype.load=function(id){var V=this;V.id=id;V.cfg=CASES[id];V.sim=getSim(id);V.fields=fieldsOf(V.cfg);V.field=V.fields[0];
+  V.parts=[];for(var q=0;q<(V.cfg.plan?260:200);q++)V.parts.push({x:1+Math.random()*W,y:1+Math.random()*H,a:Math.random()*120});
+  V.segs.innerHTML=V.fields.map(function(f){return '<button type="button" data-f="'+f+'" aria-pressed="'+String(f===V.field)+'"></button>';}).join("");
+  V.segs.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){V.setField(b.getAttribute("data-f"));});});
+  V.resize();V.labels();V.draw();V.readout();};
+Viewer.prototype.setField=function(f){var V=this;V.field=f;V.segs.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-f")===f));});V.labels();V.draw();V.readout();};
+Viewer.prototype.labels=function(){var V=this,c=V.cfg,sp=fieldSpec(c,V.field);
+  V.name.textContent=c.file;V.cbl.textContent=sp.qty+" ["+sp.unit+"]";V.cbar.style.background=cssGrad(sp.map);
+  var n=5,tk=[],rng=sp.max-sp.min,dd=rng<2?2:(rng<10?1:0);for(var k=0;k<n;k++)tk.push(sp.min+rng*k/(n-1));
+  V.ticks.innerHTML=tk.map(function(v){return "<span>"+fmt(v,dd)+"</span>";}).join("");
+  V.segs.querySelectorAll("button").forEach(function(b){b.textContent=t("f"+b.getAttribute("data-f"));});
+  if(!V.compact){V.bIso.textContent=t("iso");V.bVec.textContent=t("vec");V.bPause.textContent=V.paused?t("play"):t("pause");}};
+Viewer.prototype.resize=function(){var V=this;V.dpr=Math.min(window.devicePixelRatio||1,2);var r=V.cv.getBoundingClientRect();V.CW=Math.max(300,Math.round((r.width||600)*V.dpr));V.CH=Math.round(V.CW*H/W);V.cv.width=V.CW;V.cv.height=V.CH;};
+Viewer.prototype.draw=function(){var V=this,sim=V.sim,c=V.cfg,ctx=V.ctx,CW=V.CW,CH=V.CH,dpr=V.dpr,sp=fieldSpec(c,V.field),d=V.img.data,span=sp.max-sp.min,i,j,n,o,col,f=V.field;
+  for(j=1;j<=H;j++)for(i=1;i<=W;i++){n=IX(i,j);o=((j-1)*W+(i-1))*4;col=cmap(sp.map,(cellVal(sim,f,n)-sp.min)/span);d[o]=col[0];d[o+1]=col[1];d[o+2]=col[2];d[o+3]=255;}
+  var planMode=!!c.plan&&f==="C";
+  if(planMode){for(j=1;j<=H;j++)for(i=1;i<=W;i++){n=IX(i,j);o=((j-1)*W+(i-1))*4;d[o]=20;d[o+1]=26;d[o+2]=32;d[o+3]=Math.min(1,cellVal(sim,f,n)/(sp.max*.6))*225;}V.octx.putImageData(V.img,0,0);
+    ctx.fillStyle="#D9E0E4";ctx.fillRect(0,0,CW,CH);drawPlan(ctx,c,CW,CH,dpr);}
+  else{V.octx.putImageData(V.img,0,0);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality="high";ctx.drawImage(V.off,0,0,CW,CH);}
+  if(sim.tr&&f!=="C"){var td=V.timg.data;for(j=1;j<=H;j++)for(i=1;i<=W;i++){n=IX(i,j);o=((j-1)*W+(i-1))*4;td[o]=255;td[o+1]=255;td[o+2]=255;td[o+3]=Math.min(1,sim.tr[n]*2.2)*215;}
+    V.tctx.putImageData(V.timg,0,0);ctx.drawImage(V.trOff,0,0,CW,CH);}
+  var sx=CW/W,sy=CH/H,light=planMode;
+  var ink=light?"rgba(15,27,36,.92)":"rgba(255,255,255,.92)",soft=light?"rgba(15,27,36,.5)":"rgba(255,255,255,.55)";
+  if(V.iso&&f!=="U"){var fa=fieldArray(sim,f),lv=(f==="C"&&sim.tr)?[.1,.3,.6]:c.isoLevels;ctx.strokeStyle=light?"rgba(15,27,36,.55)":"rgba(255,255,255,.62)";ctx.lineWidth=1*dpr;ctx.beginPath();
+    for(var L=0;L<lv.length;L++){var lvl=lv[L];
+      for(j=1;j<H;j++)for(i=1;i<W;i++){var a=fa[IX(i,j)],b=fa[IX(i+1,j)],cc=fa[IX(i+1,j+1)],dd2=fa[IX(i,j+1)];
+        if(sim.solid[IX(i,j)]||sim.solid[IX(i+1,j)]||sim.solid[IX(i+1,j+1)]||sim.solid[IX(i,j+1)])continue;
+        var idx=(a>lvl?8:0)|(b>lvl?4:0)|(cc>lvl?2:0)|(dd2>lvl?1:0);if(idx===0||idx===15)continue;
+        var x0=(i-.5)*sx,y0=(j-.5)*sy,x1=x0+sx,y1=y0+sy;
+        var T=[x0+sx*((lvl-a)/((b-a)||1e-9)),y0],R=[x1,y0+sy*((lvl-b)/((cc-b)||1e-9))],B=[x0+sx*((lvl-dd2)/((cc-dd2)||1e-9)),y1],Lf=[x0,y0+sy*((lvl-a)/((dd2-a)||1e-9))],segs;
+        switch(idx){case 1:case 14:segs=[[Lf,B]];break;case 2:case 13:segs=[[B,R]];break;case 3:case 12:segs=[[Lf,R]];break;case 4:case 11:segs=[[T,R]];break;
+          case 5:segs=[[T,Lf],[B,R]];break;case 6:case 9:segs=[[T,B]];break;case 7:case 8:segs=[[T,Lf]];break;default:segs=[[T,R],[Lf,B]];}
+        for(var s2=0;s2<segs.length;s2++){ctx.moveTo(segs[s2][0][0],segs[s2][0][1]);ctx.lineTo(segs[s2][1][0],segs[s2][1][1]);}}}
+    ctx.stroke();}
+  ctx.lineWidth=dpr;ctx.strokeStyle=light?"rgba(15,27,36,.3)":"rgba(255,255,255,.42)";ctx.beginPath();
+  var sl=c.plan?2.2:3;
+  for(var k=0;k<V.parts.length;k++){var P=V.parts[k],pu=sim.sample(sim.u,P.x,P.y),pv=sim.sample(sim.v,P.x,P.y);
+    ctx.moveTo((P.x-.5)*sx,(P.y-.5)*sy);ctx.lineTo((P.x-.5+pu*sl)*sx,(P.y-.5+pv*sl)*sy);
+    if(!V.paused){P.x+=pu*.8;P.y+=pv*.8;P.a++;}
+    var ii=Math.round(P.x),jj=Math.round(P.y);
+    if(P.x<1||P.x>W||P.y<1||P.y>H||P.a>100+Math.random()*90||sim.solid[IX(Math.max(0,Math.min(W+1,ii)),Math.max(0,Math.min(H+1,jj)))]){
+      for(var tries=0;tries<6;tries++){P.x=1+Math.random()*W;P.y=1+Math.random()*H;if(!sim.solid[IX(Math.round(P.x),Math.round(P.y))])break;}P.a=0;}}
+  ctx.stroke();
+  if(V.vec){ctx.strokeStyle=light?"rgba(15,27,36,.85)":"rgba(255,255,255,.9)";ctx.lineWidth=1.1*dpr;ctx.beginPath();var ref=c.umax/c.vscale;
+    for(j=4;j<=H;j+=6)for(i=4;i<=W;i+=6){n=IX(i,j);if(sim.solid[n])continue;var uu=sim.u[n],vv=sim.v[n],m=Math.hypot(uu,vv);if(m<ref*.04)continue;
+      var Ln=Math.min(1,m/ref)*3.2*sx,ux=uu/m,uy=vv/m,cx=(i-.5)*sx,cy=(j-.5)*sy,ex=cx+ux*Ln,ey=cy+uy*Ln;
+      ctx.moveTo(cx,cy);ctx.lineTo(ex,ey);var hw=Math.max(2*dpr,Ln*.28);ctx.moveTo(ex,ey);ctx.lineTo(ex-ux*hw-uy*hw*.6,ey-uy*hw+ux*hw*.6);ctx.moveTo(ex,ey);ctx.lineTo(ex-ux*hw+uy*hw*.6,ey-uy*hw-ux*hw*.6);}
+    ctx.stroke();}
+  var fs=Math.max(9,Math.min(11.5,CW/dpr/62))*dpr;ctx.font=fs+'px "IBM Plex Mono", ui-monospace, monospace';
+  function mx(x){return x/c.LX*CW;} function mz(z){return (1-z/c.LZ)*CH;}
+  function txt(s,x,y,align,base){var w=ctx.measureText(s).width;var X=align==="right"?x-w:x;X=Math.max(3*dpr,Math.min(CW-w-3*dpr,X));var yT=base==="top"?y:y-fs;
+    ctx.fillStyle=light?"rgba(255,255,255,.78)":"rgba(7,13,18,.6)";ctx.fillRect(X-3*dpr,yT-1*dpr,w+6*dpr,fs+3*dpr);ctx.fillStyle=ink;ctx.textAlign="left";ctx.textBaseline=base==="top"?"top":"bottom";ctx.fillText(s,X,y+1*dpr);}
+  var fillS=light?"#5B6873":"#2B343C",strokeS=light?"rgba(15,27,36,.5)":"rgba(255,255,255,.32)";
+  function drawShape(q,fill,stroke){if(q.shape==="person")drawPerson(ctx,q.m,mx,mz,fill,stroke,dpr);else if(q.shape==="car")drawCar(ctx,q.m,mx,mz,fill,stroke,dpr,light);
+    else{var X=(q.i0-1)*sx,Y=(q.j0-1)*sy,Wd=(q.i1-q.i0+1)*sx,Hd=(q.j1-q.j0+1)*sy;ctx.fillStyle=fill;ctx.fillRect(X,Y,Wd,Hd);ctx.strokeStyle=stroke;ctx.lineWidth=dpr;ctx.strokeRect(X+.5,Y+.5,Wd-1,Hd-1);}}
+  sim.solids.forEach(function(q){drawShape(q,fillS,strokeS);});
+  sim.sources.forEach(function(Sq){if(Sq.shape==="person")drawPerson(ctx,Sq.m,mx,mz,"#3A3038",ink,dpr);else if(Sq.shape==="car"){drawCar(ctx,Sq.m,mx,mz,"#7A1F1A","#FFB199",dpr,light);if(Sq.m.fire)drawFire(ctx,Sq.m,mx,mz,dpr);}});
+  sim.outlines.forEach(function(q){ctx.save();ctx.setLineDash([4*dpr,3*dpr]);ctx.strokeStyle=soft;ctx.lineWidth=dpr;ctx.strokeRect((q.i0-1)*sx,(q.j0-1)*sy,(q.i1-q.i0+1)*sx,(q.j1-q.j0+1)*sy);ctx.restore();});
+  sim.sources.forEach(function(Sq){if(!Sq.outline||Sq.shape)return;var q=Sq.q;ctx.strokeStyle=ink;ctx.lineWidth=1.2*dpr;ctx.strokeRect((q.i0-1)*sx,(q.j0-1)*sy,(q.i1-q.i0+1)*sx,(q.j1-q.j0+1)*sy-1);});
+  if(planMode){ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality="high";ctx.drawImage(V.off,0,0,CW,CH);}
+  var ph=sim.phase();
+  sim.fans.forEach(function(F){var q=F.q,on=(F.phase==null||F.phase===ph);if(F.hide||(F.fu===0&&F.fv===0))return;var X=(q.i0-1)*sx,Y=(q.j0-1)*sy,Wd=(q.i1-q.i0+1)*sx,Hd=(q.j1-q.j0+1)*sy;
+    ctx.globalAlpha=on?1:.35;ctx.fillStyle=light?"#1C2A36":"#E8EEF3";ctx.fillRect(X,Y,Wd,Hd);
+    var cx=X+Wd/2,cy=Y+Hd/2,ax=F.fu?Math.sign(F.fu):0,ay=F.fv?Math.sign(F.fv):0,Ln=10*dpr;ctx.strokeStyle=light?"#1C2A36":"#E8EEF3";ctx.lineWidth=1.6*dpr;ctx.beginPath();
+    var ex=cx+ax*(Wd/2+Ln),ey=cy+ay*(Hd/2+Ln);ctx.moveTo(cx+ax*Wd/2,cy+ay*Hd/2);ctx.lineTo(ex,ey);ctx.moveTo(ex,ey);ctx.lineTo(ex-ax*5*dpr-ay*4*dpr,ey-ay*5*dpr-ax*4*dpr);ctx.moveTo(ex,ey);ctx.lineTo(ex-ax*5*dpr+ay*4*dpr,ey-ay*5*dpr+ax*4*dpr);ctx.stroke();ctx.globalAlpha=1;});
+  (c.bcs||[]).forEach(function(b){var th=4*dpr,X,Y,Wd,Hd;
+    if(b.side==="top"||b.side==="bottom"){X=(b._a-1)*sx;Wd=(b._e-b._a+1)*sx;Hd=th;Y=b.side==="top"?0:CH-th;}else{Y=(b._a-1)*sy;Hd=(b._e-b._a+1)*sy;Wd=th;X=b.side==="left"?0:CW-th;}
+    ctx.fillStyle=b.type==="in"?(light?"#2B47B0":"#E8EEF3"):(light?"#1C2A36":"#8B9AA6");ctx.fillRect(X,Y,Wd,Hd);});
+  (c.bcs||[]).forEach(function(b){if(!b.key)return;var s=t(b.key);
+    if(b.side==="top")txt(s,(b._a-1)*sx,8*dpr,"left","top");else if(b.side==="bottom")txt(s,(b._a-1)*sx,CH-8*dpr);
+    else{var yy=(b._a-1)*sy-3*dpr;if(yy<fs+6*dpr)yy=(b._e)*sy+fs+6*dpr;if(b.side==="left")txt(s,9*dpr,yy);else txt(s,CW-9*dpr,yy,"right");}});
+  function lab(o,q){if(!o.key)return;var s=t(o.key);if(o.lx!=null)txt(s,mx(o.lx),mz(o.lz),o.align);else txt(s,(q.i0-1)*sx,(q.j0-1)*sy-4*dpr,o.align);}
+  sim.solids.forEach(function(q){lab(q,q);});sim.sources.forEach(function(Sq){lab(Sq,Sq.q);});
+  sim.fans.forEach(function(F){if(F.key){var on=(F.phase==null||F.phase===ph);ctx.globalAlpha=on?1:.45;lab(F,F.q);ctx.globalAlpha=1;}});
+  sim.outlines.forEach(function(q){lab(q,q);});(c.labels||[]).forEach(function(Lb){txt(t(Lb.key),mx(Lb.x)-4*dpr,mz(Lb.z),Lb.align);});
+  ctx.fillStyle=soft;ctx.textAlign="left";ctx.textBaseline="bottom";
+  for(var m2=c.tick;m2<c.LX-c.tick*.3;m2+=c.tick){var X2=mx(m2);ctx.fillRect(X2,CH-5*dpr,dpr,5*dpr);ctx.fillText(m2+" m",X2+3*dpr,CH-2*dpr);}
+  c.probes.forEach(function(P){var px=mx(P.x),pz=mz(P.z);ctx.strokeStyle=light?"#0F1B24":"#fff";ctx.lineWidth=1.3*dpr;ctx.beginPath();ctx.arc(px,pz,4.5*dpr,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.moveTo(px-8*dpr,pz);ctx.lineTo(px-5*dpr,pz);ctx.moveTo(px+5*dpr,pz);ctx.lineTo(px+8*dpr,pz);ctx.stroke();});
+};
+Viewer.prototype.readout=function(){var V=this,c=V.cfg,sim=V.sim,vert=c.plan?"y":"z",sp=fieldSpec(c,V.field);
+  function val(P){var r=sim.at(P.x,P.z);var main=V.field==="U"?r.sp:(V.field==="C"&&sim.tr)?r.tr:r.s;return fmt(main,sp.dec)+" "+sp.unit+(V.field==="U"?"":" · "+fmt(r.sp,2)+" m/s");}
+  var parts=c.probes.map(function(P){return (c.probes.length>1?t(P.key)+" ":"")+val(P);}),P0=c.probes[0];
+  V.ro.innerHTML=parts.join("<br>")+"<small>"+(c.probes.length>1?t("probe")+" x = "+fmt(P0.x,1)+" m":t("probe")+" "+t(P0.key)+" · x = "+fmt(P0.x,1)+" · "+vert+" = "+fmt(P0.z,1)+" m")+"</small>";
+  if(c.toggle){var on=sim.phase()===1;V.st.textContent=t(on?"st_on":"st_off");V.st.className="vstate "+(on?"on":"off");}else{V.st.className="vstate";V.st.textContent="t = "+fmt(sim.steps*.25,1)+" s";}
+  if(V.onread)V.onread();};
+Viewer.prototype.hover=function(e){var V=this,c=V.cfg,r=V.cv.getBoundingClientRect(),fx=(e.clientX-r.left)/r.width,fy=(e.clientY-r.top)/r.height;
+  if(fx<0||fx>1||fy<0||fy>1){V.probeEl.hidden=true;return;}
+  var xm=fx*c.LX,zm=(1-fy)*c.LZ,res=V.sim.at(xm,zm),vert=c.plan?"y":"z",sp=fieldSpec(c,V.field);
+  if(res.solid)V.probeEl.textContent="x "+fmt(xm,1)+" · "+vert+" "+fmt(zm,1)+" m";
+  else{var main=V.field==="U"?res.sp:(V.field==="C"&&V.sim.tr)?res.tr:res.s;V.probeEl.textContent=sp.qty+" "+fmt(main,sp.dec)+" "+sp.unit+(V.field==="U"?"":" · |U| "+fmt(res.sp,2)+" m/s")+" · x "+fmt(xm,1)+" "+vert+" "+fmt(zm,1);}
+  V.probeEl.style.left=(e.clientX-r.left)+"px";V.probeEl.style.top=(e.clientY-r.top)+"px";V.probeEl.style.transform=fx>.6?"translate(calc(-100% - 12px),-120%)":"translate(12px,-120%)";V.probeEl.hidden=false;};
+Viewer.prototype.tick=function(){var V=this;if(!V.visible||!V.sim)return;if(!V.paused){V.sim.step();V.sim.step();}V.draw();if(++V.frame%8===0)V.readout();};
+
+/* ================= Warm-up ================= */
+var warmed={};
+function warmSync(id,n){var s=getSim(id);for(var k=0;k<n;k++)s.step();warmed[id]=true;}
+function warmAsync(id,n,done){var s=getSim(id),k=0;(function chunk(){var e=Math.min(n,k+40);while(k<e){s.step();k++;}if(k<n)setTimeout(chunk,0);else{warmed[id]=true;if(done)done();}})();}
+
+/* ================= Hero + Lab ================= */
+var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var hero=new Viewer(document.querySelector('[data-sim="hero"]'),{compact:true});
+warmSync("hero",380);hero.load("hero");
+var casesEl=document.getElementById("cases"),labs={},panels={},heads={};
+ORDER.forEach(function(id,k){var art=document.createElement("article");art.className="case";art.id="cas-"+id;
+  art.innerHTML='<div class="case-head"><span class="num">0'+(k+1)+'</span><h3></h3><span class="sub"></span></div><figure class="viewer" role="img"></figure><aside class="panel"></aside>';
+  casesEl.appendChild(art);heads[id]=art.querySelector(".case-head");panels[id]=art.querySelector(".panel");
+  var V=new Viewer(art.querySelector(".viewer"),{compact:false});V.caseId=id;V.onread=function(){updateCrits(id);};labs[id]=V;});
+function ensureLoaded(id){if(!warmed[id])warmSync(id,CASES[id].toggle?700:400);if(!labs[id].sim)labs[id].load(id);}
+function caseLabels(){ORDER.forEach(function(id,k){heads[id].querySelector("h3").textContent=t("case_"+(k+1));heads[id].querySelector(".sub").textContent=t("case_"+(k+1)+"s");labs[id].el.setAttribute("aria-label",t("aria_lab")+" · "+t("case_"+(k+1)));});}
+function renderPanel(id){var X=TEXT[id],c=CASES[id],L=lang;
+  panels[id].innerHTML='<div class="tags">'+X.tags[L].map(function(s){return "<span>"+s+"</span>";}).join("")+'</div><h3>'+X.title[L]+'</h3><p>'+X.body[L]+'</p>'+
+    '<h4>'+t("model")+'</h4><ul class="dash">'+X.model[L].map(function(s){return "<li>"+s+"</li>";}).join("")+'</ul>'+
+    '<h4>'+t("criteria")+'</h4><div class="crit">'+c.crits.map(function(cr,k){return '<div><span class="cl">'+t(cr.k)+'</span><span class="cs">'+t(cr.k+"_s")+'</span><span class="cv" data-k="'+k+'"><span class="cval">—</span><span class="chip info">…</span></span></div>';}).join("")+'</div>'+
+    '<div class="finding"><b>'+t("finding")+' :</b> '+X.finding[L]+'</div>';
+  if(labs[id].sim)updateCrits(id);}
+function updateCrits(id){var c=CASES[id],sim=getSim(id),panel=panels[id];
+  c.crits.forEach(function(cr,k){var el=panel.querySelector('.cv[data-k="'+k+'"]');if(!el)return;var v=cr.f(sim);el.querySelector(".cval").textContent=isNaN(v)?"…":fmt(v,cr.d)+" "+cr.u;
+    var chip=el.querySelector(".chip");if(cr.info){chip.className="chip info";chip.textContent=t("info");}else{var ok=cr.ok(v);chip.className="chip "+(ok?"ok":"warn");chip.textContent=t(ok?"pass":"warn");}});}
+(function warmAll(k){if(k>=ORDER.length)return;var id=ORDER[k];if(warmed[id]){if(!labs[id].sim)labs[id].load(id);warmAll(k+1);return;}warmAsync(id,CASES[id].toggle?700:400,function(){if(!labs[id].sim)labs[id].load(id);warmAll(k+1);});})(0);
+caseLabels();ORDER.forEach(renderPanel);
+window.addEventListener("resize",function(){hero.resize();hero.draw();ORDER.forEach(function(id){var V=labs[id];if(V.sim){V.resize();V.draw();}});});
+function loop(){if(!document.hidden){hero.tick();ORDER.forEach(function(id){var V=labs[id];if(V.visible&&!V.sim)ensureLoaded(id);V.tick();});}requestAnimationFrame(loop);}
+if(!reduce)requestAnimationFrame(loop);
+
+/* ================= Language ================= */
+var app=document.getElementById("app");
+function applyLang(l){lang=l;app.setAttribute("data-lang",l);document.documentElement.lang=l;document.title=t("title");
+  document.querySelectorAll(".langsw button").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-lang")===l));});
+  document.querySelectorAll("[data-i18n]").forEach(function(e){e.textContent=t(e.getAttribute("data-i18n"));});
+  document.querySelectorAll("[data-i18n-ph]").forEach(function(e){e.setAttribute("placeholder",t(e.getAttribute("data-i18n-ph")));});
+  document.querySelectorAll("[data-i18n-aria]").forEach(function(e){e.setAttribute("aria-label",t(e.getAttribute("data-i18n-aria")));});
+  hero.labels();hero.draw();hero.readout();ORDER.forEach(function(id){var V=labs[id];if(V.sim){V.labels();V.draw();V.readout();}renderPanel(id);});caseLabels();
+  var fs=document.getElementById("formStatus");fs.textContent="";fs.className="form-status";
+  try{localStorage.setItem("cfdyn-lang",l);}catch(e){}}
+document.querySelectorAll(".langsw button").forEach(function(b){b.addEventListener("click",function(){applyLang(b.getAttribute("data-lang"));});});
+var initial="fr";
+try{var saved=localStorage.getItem("cfdyn-lang");if(saved==="fr"||saved==="en")initial=saved;else if(navigator.language&&!/^fr/i.test(navigator.language))initial="en";}catch(e){}
+if(location.hash==="#en")initial="en";if(location.hash==="#fr")initial="fr";
+applyLang(initial);
+
+/* ================= Copy & form ================= */
+var cb=document.getElementById("copyMail");
+cb.addEventListener("click",function(){
+  function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById("mail"));var s=getSelection();s.removeAllRanges();s.addRange(r);cb.textContent=t("selected");}
+  try{navigator.clipboard.writeText("contact@cfdyn.fr").then(function(){cb.textContent=t("copied");setTimeout(function(){cb.textContent=t("copy");},1800);},fallback);}catch(e){fallback();}});
+var form=document.getElementById("reqForm"),fst=document.getElementById("formStatus");
+form.addEventListener("submit",function(e){e.preventDefault();var f=form.elements;
+  if(!f.name.value.trim()||!f.email.value.trim()||!f.msg.value.trim()){fst.className="form-status";fst.textContent=t("f_missing");return;}
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())){fst.className="form-status";fst.textContent=t("f_mail");return;}
+  var ty=f.type.options[f.type.selectedIndex].text,ph=f.phase.options[f.phase.selectedIndex].text;
+  var body=t("m_name")+" : "+f.name.value+"\n"+t("m_org")+" : "+f.org.value+"\n"+t("m_mail")+" : "+f.email.value+"\n"+t("m_tel")+" : "+f.tel.value+"\n"+t("m_type")+" : "+ty+"\n"+t("m_phase")+" : "+ph+"\n\n"+f.msg.value;
+  try{window.location.href="mailto:contact@cfdyn.fr?subject="+encodeURIComponent(t("subj")+" – "+ty)+"&body="+encodeURIComponent(body);}catch(err){}
+  fst.className="form-status ok";fst.textContent=t("f_ok");});
+})();
+</script>
+
+</body>
+</html>
