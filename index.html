@@ -15,7 +15,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"CFDYN","url":"https://www.cfdyn.fr/","logo":"https://www.cfdyn.fr/logo/cfdyn-icone-512.png","email":"contact@cfdyn.fr","description":"Bureau d'études en simulation aéraulique et thermique : CFD, STD, bilans thermiques, désenfumage.","areaServed":["FR","CH"],"knowsLanguage":["fr","en"],"address":{"@type":"PostalAddress","addressCountry":"FR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"CFDYN","url":"https://www.cfdyn.fr/","logo":"https://www.cfdyn.fr/logo/cfdyn-icone-512.png","email":"contact@cfdyn.com","description":"Bureau d'études en simulation aéraulique et thermique : CFD, STD, bilans thermiques, désenfumage.","areaServed":["FR","CH"],"knowsLanguage":["fr","en"],"address":{"@type":"PostalAddress","addressCountry":"FR"}}</script>
 <title>CFDYN · Bureau d'études CFD, STD et bilans thermiques</title>
 <meta name="description" content="CFDYN, bureau d'études en simulation aéraulique et thermique : CFD, simulation thermique dynamique et bilans thermiques. France et Suisse.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -505,12 +505,14 @@ footer .mark-sym{width:26px;height:24px}
         <h2 style="margin-top:14px"><span lang="fr">Parlons de votre projet</span><span lang="en">Tell us about your project</span></h2>
         <p class="lede" style="margin-top:14px"><span lang="fr">Maître d'ouvrage, maître d'œuvre ou entreprise : décrivez le bâtiment, la phase et la question à traiter. Vous recevez une proposition chiffrée sous 48 heures ouvrées.</span><span lang="en">Client, design team or contractor: describe the building, the stage and the question to answer. You will receive a priced proposal within two working days.</span></p>
         <dl class="coord">
-          <div><dt><span lang="fr">Courriel</span><span lang="en">Email</span></dt><dd><span class="mail-row"><code id="mail">contact@cfdyn.fr</code><button type="button" class="copy" id="copyMail" data-i18n="copy">Copier</button></span></dd></div>
+          <div><dt><span lang="fr">Courriel</span><span lang="en">Email</span></dt><dd><span class="mail-row"><code id="mail">contact@cfdyn.com</code><button type="button" class="copy" id="copyMail" data-i18n="copy">Copier</button></span></dd></div>
           <div><dt><span lang="fr">Zone d'intervention</span><span lang="en">Coverage</span></dt><dd><span lang="fr">France entière et Suisse</span><span lang="en">All of France and Switzerland</span></dd></div>
           <div><dt><span lang="fr">Sites</span><span lang="en">Websites</span></dt><dd style="font-family:var(--mono);font-size:.85rem">cfdyn.fr · cfdyn.com</dd></div>
         </dl>
       </div>
-      <form class="req" id="reqForm" novalidate>
+      <form class="req" id="reqForm" action="contact.php" method="post" novalidate>
+        <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="f-web">Site web</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
+        <input type="hidden" name="t" id="f-t" value="">
         <div class="f"><label for="f-name"><span lang="fr">Nom et prénom</span><span lang="en">Full name</span></label><input id="f-name" name="name" autocomplete="name" required></div>
         <div class="f"><label for="f-org"><span lang="fr">Société</span><span lang="en">Company</span></label><input id="f-org" name="org" autocomplete="organization"></div>
         <div class="f"><label for="f-mail"><span lang="fr">Courriel</span><span lang="en">Email</span></label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
@@ -568,7 +570,7 @@ copy:"Copier",copied:"Copié",selected:"Sélectionné",
 opt_cfd:"Étude CFD",opt_std:"Simulation thermique dynamique (STD)",opt_bilan:"Bilan thermique",opt_smoke:"Désenfumage",opt_other:"Plusieurs / à définir",
 ph_aps:"ESQ / APS",ph_apd:"APD / PRO",ph_dce:"DCE",ph_exe:"EXE",ph_exist:"Bâtiment existant",
 ph_msg:"Type de bâtiment, surface ou nombre de locaux, exigences particulières, échéance…",
-f_missing:"Renseignez votre nom, votre courriel et la description du projet.",f_mail:"L'adresse courriel semble incomplète.",f_ok:"Votre demande est préparée dans votre messagerie. Si rien ne s'ouvre, écrivez directement à contact@cfdyn.fr.",
+f_missing:"Renseignez votre nom, votre courriel et la description du projet.",f_mail:"L'adresse courriel semble incomplète.",f_ok:"Merci, votre demande a bien été envoyée. Nous revenons vers vous sous 48 heures ouvrées.",f_send:"Envoi en cours…",f_err:"L'envoi n'a pas abouti. Écrivez-nous directement à contact@cfdyn.com.",
 subj:"Demande de devis",m_name:"Nom",m_org:"Société",m_mail:"Courriel",m_tel:"Téléphone",m_type:"Type d'étude",m_phase:"Phase",
 fT:"Température",fU:"Vitesse",fC:"Traceur",iso:"Isolignes",vec:"Vecteurs",pause:"Pause",play:"Lecture",probe:"sonde",rel:"rel.",
 st_off:"sans déstratificateurs",st_on:"avec déstratificateurs",pass:"Conforme",warn:"À reprendre",info:"Info",
@@ -592,7 +594,7 @@ copy:"Copy",copied:"Copied",selected:"Selected",
 opt_cfd:"CFD study",opt_std:"Dynamic thermal simulation",opt_bilan:"Heat load calculation",opt_smoke:"Smoke control",opt_other:"Several / not sure yet",
 ph_aps:"Concept",ph_apd:"Developed / technical design",ph_dce:"Tender",ph_exe:"Construction",ph_exist:"Existing building",
 ph_msg:"Building type, floor area or number of rooms, special requirements, deadline…",
-f_missing:"Please enter your name, your email and a project description.",f_mail:"The email address looks incomplete.",f_ok:"Your request is ready in your email app. If nothing opens, write directly to contact@cfdyn.fr.",
+f_missing:"Please enter your name, your email and a project description.",f_mail:"The email address looks incomplete.",f_ok:"Thank you, your request has been sent. We will get back to you within two working days.",f_send:"Sending…",f_err:"Sending failed. Please write directly to contact@cfdyn.com.",
 subj:"Quote request",m_name:"Name",m_org:"Company",m_mail:"Email",m_tel:"Phone",m_type:"Study type",m_phase:"Stage",
 fT:"Temperature",fU:"Speed",fC:"Tracer",iso:"Isolines",vec:"Vectors",pause:"Pause",play:"Play",probe:"probe",rel:"rel.",
 st_off:"without destrat. fans",st_on:"with destrat. fans",pass:"Pass",warn:"To revise",info:"Info",
@@ -1022,15 +1024,21 @@ applyLang(initial);
 var cb=document.getElementById("copyMail");
 cb.addEventListener("click",function(){
   function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById("mail"));var s=getSelection();s.removeAllRanges();s.addRange(r);cb.textContent=t("selected");}
-  try{navigator.clipboard.writeText("contact@cfdyn.fr").then(function(){cb.textContent=t("copied");setTimeout(function(){cb.textContent=t("copy");},1800);},fallback);}catch(e){fallback();}});
-var form=document.getElementById("reqForm"),fst=document.getElementById("formStatus");
+  try{navigator.clipboard.writeText("contact@cfdyn.com").then(function(){cb.textContent=t("copied");setTimeout(function(){cb.textContent=t("copy");},1800);},fallback);}catch(e){fallback();}});
+var form=document.getElementById("reqForm"),fst=document.getElementById("formStatus"),ft=document.getElementById("f-t");ft.value=String(Date.now());
 form.addEventListener("submit",function(e){e.preventDefault();var f=form.elements;
   if(!f.name.value.trim()||!f.email.value.trim()||!f.msg.value.trim()){fst.className="form-status";fst.textContent=t("f_missing");return;}
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())){fst.className="form-status";fst.textContent=t("f_mail");return;}
   var ty=f.type.options[f.type.selectedIndex].text,ph=f.phase.options[f.phase.selectedIndex].text;
-  var body=t("m_name")+" : "+f.name.value+"\n"+t("m_org")+" : "+f.org.value+"\n"+t("m_mail")+" : "+f.email.value+"\n"+t("m_tel")+" : "+f.tel.value+"\n"+t("m_type")+" : "+ty+"\n"+t("m_phase")+" : "+ph+"\n\n"+f.msg.value;
-  try{window.location.href="mailto:contact@cfdyn.fr?subject="+encodeURIComponent(t("subj")+" – "+ty)+"&body="+encodeURIComponent(body);}catch(err){}
-  fst.className="form-status ok";fst.textContent=t("f_ok");});
+  var btn=form.querySelector('button[type="submit"]');
+  var data=new FormData(form);data.append("type_label",ty);data.append("phase_label",ph);data.append("lang",document.documentElement.lang==="en"?"en":"fr");
+  btn.disabled=true;fst.className="form-status";fst.textContent=t("f_send");
+  fetch("contact.php",{method:"POST",body:data,headers:{"Accept":"application/json"}})
+    .then(function(r){return r.json().catch(function(){return {ok:false};}).then(function(j){return r.ok&&j&&j.ok;});})
+    .catch(function(){return false;})
+    .then(function(ok){btn.disabled=false;
+      if(ok){form.reset();ft.value=String(Date.now());fst.className="form-status ok";fst.textContent=t("f_ok");}
+      else{fst.className="form-status";fst.textContent=t("f_err");}});});
 })();
 </script>
 
