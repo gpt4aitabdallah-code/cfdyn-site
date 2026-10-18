@@ -1,8 +1,23 @@
 RewriteEngine On
-# Force HTTPS et domaine canonique cfdyn.com
+# Une seule adresse officielle : https://cfdyn.com (HTTPS, sans www)
+# Redirige http, www.cfdyn.com, cfdyn.fr et www.cfdyn.fr vers https://cfdyn.com
 RewriteCond %{HTTPS} !=on [OR]
-RewriteCond %{HTTP_HOST} ^www\.cfdyn\.com$ [NC]
+RewriteCond %{HTTP_HOST} !^cfdyn\.com$ [NC]
 RewriteRule ^(.*)$ https://cfdyn.com/$1 [R=301,L]
+
+# Sécurité : HTTPS imposé aux navigateurs et en-têtes de protection
+<IfModule mod_headers.c>
+Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/xml text/plain
+</IfModule>
+
 # Cache statique
 <IfModule mod_expires.c>
 ExpiresActive On
